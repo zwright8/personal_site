@@ -1289,7 +1289,7 @@
         <!-- Live Market Ticker -->
         <div class="market-ticker">
             <div class="ticker-content" id="ticker">
-                � PLTR: $9.85 | NVDA: $456.78 | OXY: $62.45 | AMZN: $142.33 | BRK.B: $398.76 | META: $298.45 | SPGI: $412.67 | AAPL: $185.67 | GOOGL: $142.56
+                📊 PLTR: $9.85 | NVDA: $456.78 | OXY: $62.45 | AMZN: $142.33 | BRK.B: $398.76 | META: $298.45 | SPGI: $412.67 | AAPL: $185.67 | GOOGL: $142.56 | SNOW: $135.23 | C: $58.45 | BAC: $39.87 | SIRI: $3.12 | LLYVK: $67.89 | NU: $11.45
             </div>
         </div>
 
@@ -2049,9 +2049,9 @@
         function updateTicker() {
             const ticker = document.getElementById('ticker');
             const variations = [
-                '� PLTR: $9.92 | NVDA: $458.23 | OXY: $62.78 | AMZN: $143.12 | BRK.B: $399.45 | META: $299.67 | SPGI: $413.45 | AAPL: $186.12 | GOOGL: $143.23',
-                '� PLTR: $9.78 | NVDA: $455.67 | OXY: $61.89 | AMZN: $141.87 | BRK.B: $397.23 | META: $297.89 | SPGI: $411.78 | AAPL: $184.89 | GOOGL: $141.98',
-                '� PLTR: $10.05 | NVDA: $459.12 | OXY: $63.12 | AMZN: $144.56 | BRK.B: $400.78 | META: $301.23 | SPGI: $414.89 | AAPL: $187.34 | GOOGL: $144.12'
+                "📊 PLTR: $9.92 | NVDA: $458.23 | OXY: $62.78 | AMZN: $143.12 | BRK.B: $399.45 | META: $299.67 | SPGI: $413.45 | AAPL: $186.12 | GOOGL: $143.23 | SNOW: $136.45 | C: $58.87 | BAC: $40.12 | SIRI: $3.15 | LLYVK: $68.23 | NU: $11.67",
+                "📈 PLTR: $9.78 | NVDA: $455.67 | OXY: $61.89 | AMZN: $141.87 | BRK.B: $397.23 | META: $297.89 | SPGI: $411.78 | AAPL: $184.89 | GOOGL: $141.98 | SNOW: $134.78 | C: $58.12 | BAC: $39.67 | SIRI: $3.09 | LLYVK: $67.45 | NU: $11.23",
+                "📊 PLTR: $10.05 | NVDA: $459.12 | OXY: $63.12 | AMZN: $144.56 | BRK.B: $400.78 | META: $301.23 | SPGI: $414.89 | AAPL: $187.34 | GOOGL: $144.12 | SNOW: $137.89 | C: $59.23 | BAC: $40.45 | SIRI: $3.18 | LLYVK: $68.67 | NU: $11.89"
             ];
             
             setInterval(() => {
@@ -2189,6 +2189,78 @@
                     employees: '182,502',
                     keyMetric: 'Search Market Share: ~92%',
                     thesis: 'Search monopoly with leading AI capabilities'
+                },
+                'SNOW': {
+                    name: 'Snowflake Inc.',
+                    sector: 'Cloud Data Platform',
+                    marketCap: '$42.1B',
+                    revenue: '$3.0B',
+                    revenueGrowth: '+33% YoY',
+                    grossMargin: '75%',
+                    fcfMargin: '26%',
+                    employees: '6,808',
+                    keyMetric: 'Product Revenue: $2.7B (+34%)',
+                    thesis: 'Leading cloud data warehouse with consumption-based model'
+                },
+                'C': {
+                    name: 'Citigroup Inc.',
+                    sector: 'Global Banking',
+                    marketCap: '$112.5B',
+                    revenue: '$75.3B',
+                    revenueGrowth: '+2% YoY',
+                    grossMargin: '58%',
+                    fcfMargin: '15%',
+                    employees: '240,000',
+                    keyMetric: 'Tier 1 Capital Ratio: 15.0%',
+                    thesis: 'Global banking franchise with institutional strength'
+                },
+                'BAC': {
+                    name: 'Bank of America Corp.',
+                    sector: 'Consumer Banking',
+                    marketCap: '$309.8B',
+                    revenue: '$90.2B',
+                    revenueGrowth: '+1% YoY',
+                    grossMargin: '62%',
+                    fcfMargin: '28%',
+                    employees: '216,823',
+                    keyMetric: 'Net Interest Income: $56.5B',
+                    thesis: 'Leading US consumer bank with digital transformation'
+                },
+                'SIRI': {
+                    name: 'Sirius XM Holdings Inc.',
+                    sector: 'Satellite Radio',
+                    marketCap: '$12.8B',
+                    revenue: '$8.9B',
+                    revenueGrowth: '+2% YoY',
+                    grossMargin: '72%',
+                    fcfMargin: '29%',
+                    employees: '5,700',
+                    keyMetric: 'Self-Pay Subscribers: 32.1M',
+                    thesis: 'Subscription radio monopoly with pricing power'
+                },
+                'LLYVK': {
+                    name: 'Liberty Media Corp-Liberty Live',
+                    sector: 'Live Entertainment',
+                    marketCap: '$16.4B',
+                    revenue: '$20.8B',
+                    revenueGrowth: '+22% YoY',
+                    grossMargin: '28%',
+                    fcfMargin: '12%',
+                    employees: '43,500',
+                    keyMetric: 'Live Nation Revenue: $22.7B',
+                    thesis: 'Live entertainment monopoly through Live Nation'
+                },
+                'NU': {
+                    name: 'Nu Holdings Ltd.',
+                    sector: 'Digital Banking',
+                    marketCap: '$56.7B',
+                    revenue: '$8.8B',
+                    revenueGrowth: '+65% YoY',
+                    grossMargin: '44%',
+                    fcfMargin: '18%',
+                    employees: '11,128',
+                    keyMetric: 'Active Customers: 104.5M (+25%)',
+                    thesis: 'Leading digital bank in Latin America with rapid growth'
                 }
             };
 
