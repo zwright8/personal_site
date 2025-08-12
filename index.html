@@ -1801,8 +1801,7 @@
             } catch (error) {
                 console.error('Error loading portfolio data:', error);
                 
-                // Ultimate fallback to static data
-                fundamentalsGrid.innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 2rem;">⚠️ Loading cached data...</div>';
+                // Ultimate fallback to static data (silent fallback)
                 await loadStaticPortfolioData(fundamentalsGrid);
             }
         }
