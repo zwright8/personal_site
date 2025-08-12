@@ -221,6 +221,187 @@
             font-weight: 500;
         }
 
+        /* Holdings Section */
+        .holdings {
+            margin-bottom: 4rem;
+        }
+
+        .holdings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .holding-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            border-left: 4px solid #10b981;
+            transition: all 0.3s ease;
+        }
+
+        .holding-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        .holding-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .holding-symbol {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .holding-allocation {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .holding-name {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .holding-thesis {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .holding-metrics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 0.8rem;
+            background: #f8fafc;
+            border-radius: 8px;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .metric-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Lessons Section */
+        .lessons {
+            background: white;
+            padding: 4rem 0;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            margin-bottom: 4rem;
+        }
+
+        .lessons-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lesson-card {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.15);
+        }
+
+        .lesson-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .lesson-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .lesson-title {
+            flex: 1;
+        }
+
+        .lesson-stock {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .lesson-period {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .lesson-loss {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .lesson-story {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .lesson-learned {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 3px solid #10b981;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-style: italic;
+            color: #047857;
+            font-weight: 500;
+        }
+
         /* Projects Section */
         .projects {
             text-align: center;
@@ -392,6 +573,38 @@
                 grid-template-columns: 1fr;
             }
 
+            .holdings-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .holding-metrics {
+                grid-template-columns: 1fr;
+            }
+
+            .lessons-grid {
+                padding: 0 1rem;
+            }
+
+            .lesson-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .lesson-title {
+                order: 1;
+            }
+
+            .lesson-loss {
+                order: 2;
+                align-self: flex-start;
+            }
+
+            .lesson-icon {
+                order: 0;
+                margin-bottom: 0.5rem;
+            }
+
             .social-links {
                 flex-direction: column;
                 align-items: center;
@@ -463,6 +676,8 @@
             <a href="#" class="logo">Zach Wright</a>
             <ul class="nav-links">
                 <li><a href="#investments">Investment Thoughts</a></li>
+                <li><a href="#holdings">Current Holdings</a></li>
+                <li><a href="#lessons">Lessons from Losers</a></li>
                 <li><a href="#projects">Trading Systems</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
@@ -543,6 +758,194 @@
                         </div>
                     </div>
                 </article>
+            </div>
+        </section>
+
+        <!-- Current Holdings Section -->
+        <section id="holdings" class="holdings">
+            <h2 class="section-title">Current Holdings</h2>
+            <p class="section-subtitle">
+                My current investment positions with thesis, allocation, and key metrics. Transparency in what I'm putting my money behind.
+            </p>
+            
+            <div class="holdings-grid">
+                <!-- Holding 1 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">NVDA</div>
+                        <div class="holding-allocation">12.5%</div>
+                    </div>
+                    <div class="holding-name">NVIDIA Corporation</div>
+                    <div class="holding-thesis">
+                        Leading AI chip manufacturer with dominant position in GPU computing. The infrastructure layer for the AI revolution with strong moat through CUDA ecosystem and superior chip architecture.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Entry Price</div>
+                            <div class="metric-value">$485</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">8 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holding 2 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">MSFT</div>
+                        <div class="holding-allocation">15.0%</div>
+                    </div>
+                    <div class="holding-name">Microsoft Corporation</div>
+                    <div class="holding-thesis">
+                        Best positioned for AI integration with OpenAI partnership and Azure infrastructure. Strong enterprise moat with Office 365 and cloud services providing recurring revenue streams.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Entry Price</div>
+                            <div class="metric-value">$398</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">14 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holding 3 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">QQQ</div>
+                        <div class="holding-allocation">25.0%</div>
+                    </div>
+                    <div class="holding-name">Invesco QQQ Trust ETF</div>
+                    <div class="holding-thesis">
+                        Core technology exposure with diversification across top NASDAQ companies. Passive way to capture innovation and growth in the tech sector while reducing single-stock risk.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Avg Price</div>
+                            <div class="metric-value">$375</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">2+ years</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holding 4 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">PLTR</div>
+                        <div class="holding-allocation">8.5%</div>
+                    </div>
+                    <div class="holding-name">Palantir Technologies</div>
+                    <div class="holding-thesis">
+                        AI-powered data analytics platform with growing government and enterprise contracts. Strong competitive advantages in handling complex data integration and analysis at scale.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Entry Price</div>
+                            <div class="metric-value">$18.50</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">6 months</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lessons from Losers Section -->
+        <section id="lessons" class="lessons">
+            <h2 class="section-title">Lessons from My Losers</h2>
+            <p class="section-subtitle">
+                My biggest investment mistakes and the valuable lessons learned. Failure is the best teacher in the markets.
+            </p>
+            
+            <div class="lessons-grid">
+                <!-- Lesson 1 -->
+                <div class="lesson-card">
+                    <div class="lesson-header">
+                        <div class="lesson-icon">
+                            <i class="fas fa-chart-line-down"></i>
+                        </div>
+                        <div class="lesson-title">
+                            <div class="lesson-stock">ZOOM (ZM)</div>
+                            <div class="lesson-period">March 2020 - Dec 2021</div>
+                        </div>
+                        <div class="lesson-loss">-65%</div>
+                    </div>
+                    <div class="lesson-story">
+                        Bought heavily during the pandemic thinking remote work was permanent. Held too long as the stock peaked at $550+ and rode it all the way down. Got caught up in the narrative without considering post-pandemic normalization.
+                    </div>
+                    <div class="lesson-learned">
+                        <strong>Lesson:</strong> Temporary tailwinds don't justify permanent valuations. Always consider what happens when the catalyst reverses. Set clear exit strategies based on fundamentals, not hope.
+                    </div>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="lesson-card">
+                    <div class="lesson-header">
+                        <div class="lesson-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="lesson-title">
+                            <div class="lesson-stock">ARKK ETF</div>
+                            <div class="lesson-period">Feb 2021 - Nov 2022</div>
+                        </div>
+                        <div class="lesson-loss">-58%</div>
+                    </div>
+                    <div class="lesson-story">
+                        Bought into the "disruptive innovation" story at the top. Believed that high-growth tech would continue regardless of interest rates. Ignored the duration risk in high-multiple growth stocks when rates started rising.
+                    </div>
+                    <div class="lesson-learned">
+                        <strong>Lesson:</strong> Understand macro conditions and their impact on different asset classes. Growth stocks are particularly sensitive to interest rate changes. Don't ignore the Fed when making investment decisions.
+                    </div>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="lesson-card">
+                    <div class="lesson-header">
+                        <div class="lesson-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div class="lesson-title">
+                            <div class="lesson-stock">Various SPACs</div>
+                            <div class="lesson-period">2020 - 2021</div>
+                        </div>
+                        <div class="lesson-loss">-70%</div>
+                    </div>
+                    <div class="lesson-story">
+                        Got swept up in the SPAC mania, buying multiple pre-revenue companies with grand promises. Ignored the misaligned incentives where sponsors get paid regardless of performance. Fell for marketing over substance.
+                    </div>
+                    <div class="lesson-learned">
+                        <strong>Lesson:</strong> Understand the incentive structure of any investment vehicle. If the promoters get rich while investors lose money, avoid it. Stick to businesses with proven revenue and clear paths to profitability.
+                    </div>
+                </div>
+
+                <!-- Lesson 4 -->
+                <div class="lesson-card">
+                    <div class="lesson-header">
+                        <div class="lesson-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="lesson-title">
+                            <div class="lesson-stock">Options Trading</div>
+                            <div class="lesson-period">Various periods</div>
+                        </div>
+                        <div class="lesson-loss">-40%</div>
+                    </div>
+                    <div class="lesson-story">
+                        Tried to time earnings and market moves with options. Made some big wins early which gave false confidence. Time decay and volatility crush taught me expensive lessons about the complexities of options pricing.
+                    </div>
+                    <div class="lesson-learned">
+                        <strong>Lesson:</strong> Options are primarily insurance instruments, not speculation tools. The house edge favors sellers over buyers. Focus on building wealth through ownership of productive assets, not derivatives.
+                    </div>
+                </div>
             </div>
         </section>
 
