@@ -1223,6 +1223,38 @@
         .sentiment-positive { background: rgba(16, 185, 129, 0.2); color: #10b981; }
         .sentiment-negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
         .sentiment-neutral { background: rgba(107, 114, 128, 0.2); color: #6b7280; }
+
+        /* Private Markets Cards */
+        .private-company-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(75, 0, 130, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .private-company-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(75, 0, 130, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .private-company-card:hover::before {
+            left: 100%;
+        }
+
+        .private-company-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(75, 0, 130, 0.5);
+            box-shadow: 0 15px 35px rgba(75, 0, 130, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -1365,25 +1397,129 @@
             </button>
         </div>
 
-        <!-- Cryptocurrency Prices Widget -->
-        <div class="ai-section" style="background: rgba(255, 165, 0, 0.1); border-color: rgba(255, 165, 0, 0.3);">
+        <!-- Private Markets & Pre-IPO Companies -->
+        <div class="ai-section" style="background: rgba(75, 0, 130, 0.1); border-color: rgba(75, 0, 130, 0.3);">
             <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">
-                ₿ Cryptocurrency Market
+                🏢 Private Markets & Pre-IPO Opportunities
             </h3>
-            <div class="tradingview-widget-container">
-                <div class="tradingview-widget-container__widget"></div>
-                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
-                {
-                "width": "100%",
-                "height": "400",
-                "defaultColumn": "overview",
-                "screener_type": "crypto_mkt",
-                "displayCurrency": "USD",
-                "colorTheme": "dark",
-                "locale": "en",
-                "isTransparent": true
-                }
-                </script>
+            <p style="color: rgba(255,255,255,0.7); margin-bottom: 1rem;">
+                Tracking high-growth private companies available on secondary markets like Forge, EquityZen, and Nasdaq Private Market
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                <!-- SpaceX -->
+                <div class="private-company-card">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: #4b0082; font-size: 1.2rem; margin: 0;">SpaceX</h4>
+                        <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">SPACE</span>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                        Last Valuation: $180B • Founded: 2002
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
+                        Private aerospace manufacturer and space transportation company. Leading commercial space industry with Starship, Starlink satellite constellation.
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: rgba(255,255,255,0.6);">Available on: Forge, EquityZen</span>
+                        <span style="color: #10b981;">+127% (5Y)</span>
+                    </div>
+                </div>
+
+                <!-- Stripe -->
+                <div class="private-company-card">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: #4b0082; font-size: 1.2rem; margin: 0;">Stripe</h4>
+                        <span style="background: rgba(37, 99, 235, 0.2); color: #2563eb; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">FINTECH</span>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                        Last Valuation: $95B • Founded: 2010
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
+                        Payment processing platform powering millions of businesses. Dominant in online payments with expanding financial services suite.
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: rgba(255,255,255,0.6);">Available on: Forge, Nasdaq Private</span>
+                        <span style="color: #10b981;">+89% (3Y)</span>
+                    </div>
+                </div>
+
+                <!-- Databricks -->
+                <div class="private-company-card">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: #4b0082; font-size: 1.2rem; margin: 0;">Databricks</h4>
+                        <span style="background: rgba(245, 158, 11, 0.2); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">AI/DATA</span>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                        Last Valuation: $43B • Founded: 2013
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
+                        Unified analytics platform for big data and machine learning. Leading the data lakehouse architecture trend.
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: rgba(255,255,255,0.6);">Available on: EquityZen, Forge</span>
+                        <span style="color: #10b981;">+156% (4Y)</span>
+                    </div>
+                </div>
+
+                <!-- Discord -->
+                <div class="private-company-card">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: #4b0082; font-size: 1.2rem; margin: 0;">Discord</h4>
+                        <span style="background: rgba(139, 92, 246, 0.2); color: #8b5cf6; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">SOCIAL</span>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                        Last Valuation: $15B • Founded: 2015
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
+                        Communication platform with 150M+ monthly users. Strong gaming community, expanding to broader social/professional use.
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: rgba(255,255,255,0.6);">Available on: Forge, Hiive</span>
+                        <span style="color: #10b981;">+67% (2Y)</span>
+                    </div>
+                </div>
+
+                <!-- Canva -->
+                <div class="private-company-card">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: #4b0082; font-size: 1.2rem; margin: 0;">Canva</h4>
+                        <span style="background: rgba(236, 72, 153, 0.2); color: #ec4899; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">DESIGN</span>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                        Last Valuation: $40B • Founded: 2013
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
+                        Online design platform with 135M+ monthly users. AI-powered design tools, expanding into workplace productivity.
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: rgba(255,255,255,0.6);">Available on: EquityZen, Forge</span>
+                        <span style="color: #10b981;">+233% (6Y)</span>
+                    </div>
+                </div>
+
+                <!-- Anthropic -->
+                <div class="private-company-card">
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1rem;">
+                        <h4 style="color: #4b0082; font-size: 1.2rem; margin: 0;">Anthropic</h4>
+                        <span style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 0.2rem 0.6rem; border-radius: 12px; font-size: 0.8rem;">AI</span>
+                    </div>
+                    <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-bottom: 0.8rem;">
+                        Last Valuation: $18B • Founded: 2021
+                    </div>
+                    <div style="color: rgba(255,255,255,0.7); font-size: 0.85rem; line-height: 1.4; margin-bottom: 1rem;">
+                        AI safety-focused company behind Claude AI assistant. Direct competitor to OpenAI with strong enterprise adoption.
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                        <span style="color: rgba(255,255,255,0.6);">Available on: Forge, Hiive</span>
+                        <span style="color: #10b981;">+900% (2Y)</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.05); border-radius: 8px; border-left: 3px solid #4b0082;">
+                <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin: 0;">
+                    💡 <strong>Private Market Access:</strong> These companies trade on secondary markets before IPO. Minimum investments typically range from $10K-$100K. Always verify current valuations and availability.
+                </p>
             </div>
         </div>
 
@@ -2115,29 +2251,44 @@
             }
         }
 
-        // Crypto prices integration
-        async function fetchCryptoPrices() {
-            try {
-                // Using CoinGecko API (free tier)
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,cardano,solana,polygon&vs_currencies=usd&include_24hr_change=true');
-                const data = await response.json();
-                
-                // Add crypto section to market ticker
-                const ticker = document.getElementById('ticker');
-                if (ticker) {
-                    const cryptoText = Object.entries(data).map(([coin, info]) => {
-                        const change = info.usd_24h_change?.toFixed(2) || '0.00';
-                        const arrow = parseFloat(change) >= 0 ? '↗️' : '↘️';
-                        return `${coin.toUpperCase()}: $${info.usd.toLocaleString()} (${change}%) ${arrow}`;
-                    }).join(' | ');
-                    
-                    // Add crypto data to existing ticker
-                    const currentText = ticker.textContent;
-                    ticker.textContent = currentText + ' | ' + cryptoText;
-                }
-            } catch (error) {
-                console.log('Crypto data unavailable');
+        // Private Markets Data Integration
+        function loadPrivateMarketsData() {
+            // Simulate private market data updates
+            const companies = [
+                { name: 'SpaceX', valuation: 180, change: 2.3, sector: 'Space' },
+                { name: 'Stripe', valuation: 95, change: -1.2, sector: 'FinTech' },
+                { name: 'Databricks', valuation: 43, change: 4.7, sector: 'AI/Data' },
+                { name: 'Discord', valuation: 15, change: 1.8, sector: 'Social' },
+                { name: 'Canva', valuation: 40, change: 3.2, sector: 'Design' },
+                { name: 'Anthropic', valuation: 18, change: 12.5, sector: 'AI' }
+            ];
+
+            // Update private market ticker
+            const privateMarketText = companies.map(company => {
+                const arrow = company.change >= 0 ? '↗️' : '↘️';
+                return `${company.name}: $${company.valuation}B (${company.change >= 0 ? '+' : ''}${company.change}%) ${arrow}`;
+            }).join(' | ');
+
+            // Add to ticker if it exists
+            const ticker = document.getElementById('ticker');
+            if (ticker) {
+                const currentText = ticker.textContent;
+                ticker.textContent = currentText + ' | PRIVATE MARKETS: ' + privateMarketText;
             }
+        }
+
+        // Forge/EquityZen availability checker (simulated)
+        function checkPrivateMarketAvailability() {
+            const platforms = ['Forge', 'EquityZen', 'Nasdaq Private Market', 'Hiive'];
+            const availabilityData = {};
+            
+            // Simulate availability data
+            const companies = ['SpaceX', 'Stripe', 'Databricks', 'Discord', 'Canva', 'Anthropic'];
+            companies.forEach(company => {
+                availabilityData[company] = platforms[Math.floor(Math.random() * platforms.length)];
+            });
+            
+            return availabilityData;
         }
 
         // AI-Powered Features
@@ -2315,7 +2466,7 @@
             // Initialize financial data integrations
             fetchStockData();
             simulateRealTimeUpdates();
-            fetchCryptoPrices();
+            loadPrivateMarketsData();
             loadEconomicCalendar();
             
             // Add scroll animations to sections
