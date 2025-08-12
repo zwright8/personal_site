@@ -1289,50 +1289,24 @@
         <!-- Live Market Ticker -->
         <div class="market-ticker">
             <div class="ticker-content" id="ticker">
-                📈 SPY: $421.32 (+0.85%) | QQQ: $368.45 (+1.23%) | NVDA: $456.78 (+2.14%) | AAPL: $185.67 (-0.45%) | MSFT: $334.21 (+0.92%) | TSLA: $242.89 (+3.21%) | Market Cap: $45.2T
+                � PLTR: $9.85 | NVDA: $456.78 | OXY: $62.45 | AMZN: $142.33 | BRK.B: $398.76 | META: $298.45 | SPGI: $412.67 | AAPL: $185.67 | GOOGL: $142.56
             </div>
         </div>
 
-        <!-- Portfolio Performance Visualization -->
+        <!-- Portfolio Holdings Analysis -->
         <div class="portfolio-viz">
-            <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">Live Market Data & Charts</h3>
+            <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">Portfolio Holdings - Fundamental Analysis</h3>
             
-            <!-- TradingView Market Overview Widget -->
-            <div class="tradingview-widget-container" style="margin-bottom: 2rem;">
-                <div id="tradingview_widget" style="height: 400px;"></div>
-                <div class="tradingview-widget-copyright">
-                    <a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-                        <span class="blue-text">Track all markets on TradingView</span>
-                    </a>
-                </div>
-                <script type="text/javascript">
-                new TradingView.widget({
-                    "width": "100%",
-                    "height": "400",
-                    "symbol": "NASDAQ:AAPL",
-                    "interval": "D",
-                    "timezone": "Etc/UTC",
-                    "theme": "dark",
-                    "style": "1",
-                    "locale": "en",
-                    "toolbar_bg": "#f1f3f6",
-                    "enable_publishing": false,
-                    "allow_symbol_change": true,
-                    "container_id": "tradingview_widget"
-                });
-                </script>
-            </div>
-
-            <!-- Real-time Stock Quotes -->
-            <div id="yahoo-finance-data" style="background: rgba(0,0,0,0.7); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
-                <h4 style="color: #00ff88; margin-bottom: 1rem; font-family: 'Courier New', monospace;">📊 LIVE STOCK QUOTES</h4>
-                <div id="stock-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                    <!-- Stock data will be populated here -->
+            <!-- Portfolio Fundamental Data -->
+            <div id="portfolio-fundamentals" style="background: rgba(0,0,0,0.7); padding: 1.5rem; border-radius: 12px; margin-bottom: 1rem;">
+                <h4 style="color: #00ff88; margin-bottom: 1rem; font-family: 'Courier New', monospace;">📊 PORTFOLIO HOLDINGS FUNDAMENTALS</h4>
+                <div id="fundamentals-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+                    <!-- Fundamental data will be populated here -->
                 </div>
             </div>
             
             <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
-                Real-time market data powered by TradingView & Yahoo Finance
+                Fundamental business metrics for portfolio holdings
             </p>
         </div>
 
@@ -2071,18 +2045,18 @@
             }
         });
 
-        // Live ticker animation (simulate market data updates)
+        // Live ticker animation for portfolio holdings
         function updateTicker() {
             const ticker = document.getElementById('ticker');
             const variations = [
-                '📈 SPY: $421.45 (+0.92%) | QQQ: $368.67 (+1.31%) | NVDA: $458.23 (+2.46%) | AAPL: $185.43 (-0.58%) | MSFT: $334.89 (+1.12%)',
-                '📊 SPY: $420.98 (+0.77%) | QQQ: $367.89 (+1.08%) | NVDA: $455.67 (+1.89%) | AAPL: $186.12 (-0.21%) | MSFT: $333.45 (+0.78%)',
-                '📉 SPY: $421.67 (+1.03%) | QQQ: $369.23 (+1.45%) | NVDA: $459.12 (+2.78%) | AAPL: $184.89 (-0.79%) | MSFT: $335.67 (+1.34%)'
+                '� PLTR: $9.92 | NVDA: $458.23 | OXY: $62.78 | AMZN: $143.12 | BRK.B: $399.45 | META: $299.67 | SPGI: $413.45 | AAPL: $186.12 | GOOGL: $143.23',
+                '� PLTR: $9.78 | NVDA: $455.67 | OXY: $61.89 | AMZN: $141.87 | BRK.B: $397.23 | META: $297.89 | SPGI: $411.78 | AAPL: $184.89 | GOOGL: $141.98',
+                '� PLTR: $10.05 | NVDA: $459.12 | OXY: $63.12 | AMZN: $144.56 | BRK.B: $400.78 | META: $301.23 | SPGI: $414.89 | AAPL: $187.34 | GOOGL: $144.12'
             ];
             
             setInterval(() => {
                 const randomIndex = Math.floor(Math.random() * variations.length);
-                ticker.textContent = variations[randomIndex] + ' | Market Cap: $' + (45.1 + Math.random() * 0.3).toFixed(1) + 'T';
+                ticker.textContent = variations[randomIndex];
             }, 5000);
         }
 
@@ -2101,76 +2075,196 @@
             });
         }, observerOptions);
 
-        // Yahoo Finance API Integration (Free Alternative)
-        async function fetchStockData(symbols) {
-            const stockGrid = document.getElementById('stock-grid');
-            if (!stockGrid) return;
+        // Portfolio Fundamental Data
+        async function fetchPortfolioFundamentals() {
+            const fundamentalsGrid = document.getElementById('fundamentals-grid');
+            if (!fundamentalsGrid) return;
 
-            // Using a free alternative API for demo purposes
-            const stockData = {
-                'AAPL': { price: 185.32, change: -0.45, changePercent: -0.24 },
-                'NVDA': { price: 456.78, change: 12.34, changePercent: 2.78 },
-                'MSFT': { price: 334.21, change: 3.45, changePercent: 1.04 },
-                'GOOGL': { price: 142.56, change: -1.23, changePercent: -0.86 },
-                'TSLA': { price: 242.89, change: 7.45, changePercent: 3.16 },
-                'SPY': { price: 421.32, change: 2.12, changePercent: 0.51 }
+            // Fundamental business data for portfolio holdings
+            const portfolioFundamentals = {
+                'PLTR': {
+                    name: 'Palantir Technologies',
+                    sector: 'Data Analytics & AI',
+                    marketCap: '$20.8B',
+                    revenue: '$2.4B',
+                    revenueGrowth: '+17% YoY',
+                    grossMargin: '81%',
+                    fcfMargin: '26%',
+                    employees: '3,838',
+                    keyMetric: 'Customer Count: 497 (+41% YoY)',
+                    thesis: 'AI-powered data platform with government & enterprise moat'
+                },
+                'NVDA': {
+                    name: 'NVIDIA Corporation',
+                    sector: 'Semiconductors & AI',
+                    marketCap: '$1.12T',
+                    revenue: '$126.0B',
+                    revenueGrowth: '+122% YoY',
+                    grossMargin: '73%',
+                    fcfMargin: '28%',
+                    employees: '29,600',
+                    keyMetric: 'Data Center Revenue: $47.5B (+427%)',
+                    thesis: 'Dominant AI chip maker with CUDA software ecosystem'
+                },
+                'OXY': {
+                    name: 'Occidental Petroleum',
+                    sector: 'Energy & Carbon Capture',
+                    marketCap: '$58.7B',
+                    revenue: '$26.5B',
+                    revenueGrowth: '-15% YoY',
+                    grossMargin: '45%',
+                    fcfMargin: '31%',
+                    employees: '11,500',
+                    keyMetric: 'Permian Basin: 2M+ acres',
+                    thesis: 'Low-cost oil producer with carbon capture technology'
+                },
+                'AMZN': {
+                    name: 'Amazon.com Inc.',
+                    sector: 'E-commerce & Cloud',
+                    marketCap: '$1.51T',
+                    revenue: '$574.8B',
+                    revenueGrowth: '+11% YoY',
+                    grossMargin: '48%',
+                    fcfMargin: '8%',
+                    employees: '1,541,000',
+                    keyMetric: 'AWS Revenue: $90.8B (+13%)',
+                    thesis: 'Dominant cloud provider with expanding AI services'
+                },
+                'BRK.B': {
+                    name: 'Berkshire Hathaway',
+                    sector: 'Diversified Holdings',
+                    marketCap: '$882B',
+                    revenue: '$364.5B',
+                    revenueGrowth: '+4% YoY',
+                    grossMargin: '22%',
+                    fcfMargin: '12%',
+                    employees: '396,000',
+                    keyMetric: 'Cash Position: $167B',
+                    thesis: 'Buffett-managed conglomerate with insurance float'
+                },
+                'META': {
+                    name: 'Meta Platforms Inc.',
+                    sector: 'Social Media & VR/AR',
+                    marketCap: '$762B',
+                    revenue: '$134.9B',
+                    revenueGrowth: '+16% YoY',
+                    grossMargin: '82%',
+                    fcfMargin: '29%',
+                    employees: '67,317',
+                    keyMetric: 'Monthly Active Users: 3.07B',
+                    thesis: 'Social media dominance with metaverse investments'
+                },
+                'SPGI': {
+                    name: 'S&P Global Inc.',
+                    sector: 'Financial Data & Analytics',
+                    marketCap: '$136B',
+                    revenue: '$9.7B',
+                    revenueGrowth: '+8% YoY',
+                    grossMargin: '62%',
+                    fcfMargin: '45%',
+                    employees: '35,000',
+                    keyMetric: 'Credit Rating Market Share: ~44%',
+                    thesis: 'Oligopoly in credit ratings with subscription model'
+                },
+                'AAPL': {
+                    name: 'Apple Inc.',
+                    sector: 'Consumer Technology',
+                    marketCap: '$2.86T',
+                    revenue: '$383.3B',
+                    revenueGrowth: '-3% YoY',
+                    grossMargin: '45%',
+                    fcfMargin: '26%',
+                    employees: '161,000',
+                    keyMetric: 'iPhone Revenue: $200.6B',
+                    thesis: 'Premium hardware ecosystem with services growth'
+                },
+                'GOOGL': {
+                    name: 'Alphabet Inc.',
+                    sector: 'Internet & AI Services',
+                    marketCap: '$1.75T',
+                    revenue: '$307.4B',
+                    revenueGrowth: '+7% YoY',
+                    grossMargin: '58%',
+                    fcfMargin: '21%',
+                    employees: '182,502',
+                    keyMetric: 'Search Market Share: ~92%',
+                    thesis: 'Search monopoly with leading AI capabilities'
+                }
             };
 
             // Clear existing content
-            stockGrid.innerHTML = '';
+            fundamentalsGrid.innerHTML = '';
 
-            // Create stock cards
-            Object.entries(stockData).forEach(([symbol, data]) => {
+            // Create fundamental data cards
+            Object.entries(portfolioFundamentals).forEach(([symbol, data]) => {
                 const card = document.createElement('div');
-                const isPositive = data.change >= 0;
-                const color = isPositive ? '#00ff88' : '#ff4444';
-                const arrow = isPositive ? '↗️' : '↘️';
                 
                 card.style.cssText = `
                     background: rgba(255,255,255,0.05);
-                    border: 1px solid ${color}40;
-                    border-radius: 8px;
-                    padding: 1rem;
+                    border: 1px solid rgba(0,255,136,0.3);
+                    border-radius: 12px;
+                    padding: 1.5rem;
                     transition: all 0.3s ease;
+                    backdrop-filter: blur(10px);
                 `;
                 
                 card.innerHTML = `
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                        <span style="font-weight: 600; color: white; font-size: 1.1rem;">${symbol}</span>
-                        <span style="font-size: 1.2rem;">${arrow}</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                        <div>
+                            <span style="font-weight: 700; color: #00ff88; font-size: 1.2rem;">${symbol}</span>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem; margin-top: 0.2rem;">${data.name}</div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="color: rgba(255,255,255,0.7); font-size: 0.8rem;">${data.sector}</div>
+                            <div style="color: white; font-size: 0.9rem; font-weight: 600; margin-top: 0.2rem;">${data.marketCap}</div>
+                        </div>
                     </div>
-                    <div style="font-size: 1.3rem; font-weight: 700; color: white; margin-bottom: 0.3rem;">
-                        $${data.price.toFixed(2)}
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-bottom: 1rem;">
+                        <div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">Revenue (TTM)</div>
+                            <div style="color: white; font-weight: 600;">${data.revenue}</div>
+                            <div style="color: #00ff88; font-size: 0.8rem;">${data.revenueGrowth}</div>
+                        </div>
+                        <div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">Gross Margin</div>
+                            <div style="color: white; font-weight: 600;">${data.grossMargin}</div>
+                            <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">FCF: ${data.fcfMargin}</div>
+                        </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between;">
-                        <span style="color: ${color}; font-size: 0.9rem;">
-                            ${isPositive ? '+' : ''}${data.change.toFixed(2)}
-                        </span>
-                        <span style="color: ${color}; font-size: 0.9rem;">
-                            ${isPositive ? '+' : ''}${data.changePercent.toFixed(2)}%
-                        </span>
+                    <div style="margin-bottom: 1rem;">
+                        <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem;">Key Metric</div>
+                        <div style="color: #00ff88; font-weight: 600; font-size: 0.9rem;">${data.keyMetric}</div>
+                    </div>
+                    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.8rem;">
+                        <div style="color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-bottom: 0.3rem;">Investment Thesis</div>
+                        <div style="color: rgba(255,255,255,0.9); font-size: 0.85rem; line-height: 1.4;">${data.thesis}</div>
+                    </div>
+                    <div style="margin-top: 0.8rem; text-align: right;">
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.7rem;">Employees: ${data.employees}</span>
                     </div>
                 `;
                 
                 card.addEventListener('mouseenter', () => {
-                    card.style.borderColor = color;
-                    card.style.transform = 'translateY(-2px)';
+                    card.style.borderColor = '#00ff88';
+                    card.style.transform = 'translateY(-4px)';
+                    card.style.boxShadow = '0 10px 30px rgba(0,255,136,0.2)';
                 });
                 
                 card.addEventListener('mouseleave', () => {
-                    card.style.borderColor = color + '40';
+                    card.style.borderColor = 'rgba(0,255,136,0.3)';
                     card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
                 });
                 
-                stockGrid.appendChild(card);
+                fundamentalsGrid.appendChild(card);
             });
         }
 
-        // Real-time price updates (simulated)
-        function simulateRealTimeUpdates() {
-            setInterval(() => {
-                fetchStockData();
-            }, 5000); // Update every 5 seconds
+        // Portfolio fundamentals updates (static data, updated quarterly)
+        function updatePortfolioData() {
+            // Portfolio fundamentals don't need real-time updates
+            // This function can be used for quarterly data refreshes
+            fetchPortfolioFundamentals();
         }
 
         // Economic Calendar Integration (Free)
@@ -2245,8 +2339,8 @@
             initializeAI();
             
             // Initialize financial data integrations
-            fetchStockData();
-            simulateRealTimeUpdates();
+            fetchPortfolioFundamentals();
+            updatePortfolioData();
             loadPrivateMarketsData();
             loadEconomicCalendar();
             
