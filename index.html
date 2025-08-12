@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zach Wright - Investment Analysis & Quant Trading</title>
+    <meta name="description" content="Investment thoughts and quantitative trading systems by Zach Wright">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            border-bottom: 1px solid #e0e0e0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 4rem 0;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 5rem;
+            padding: 2rem 0;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Investment Thoughts Section */
+        .investments {
+            background: white;
+            padding: 4rem 0;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            margin-bottom: 4rem;
+        }
+
+        .investment-posts {
+            display: grid;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .investment-post {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+            transition: all 0.3s ease;
+        }
+
+        .investment-post:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .post-date {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 12px;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .post-date .month {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .post-date .day {
+            font-size: 1.6rem;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .post-date .year {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .post-content {
+            flex: 1;
+        }
+
+        .post-content h3 {
+            margin: 0 0 1rem 0;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .post-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+
+        .post-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .post-tags span {
+            padding: 0.3rem 0.8rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: #2563eb;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .project-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            padding: 0.3rem 0.8rem;
+            background: #f1f5f9;
+            color: #475569;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: white;
+            padding: 4rem 0;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            color: #666;
+            padding: 1rem 2rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .social-link:hover {
+            color: #2563eb;
+            border-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15);
+        }
+
+        .social-link i {
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .investment-post {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .post-date {
+                width: 70px;
+                height: 70px;
+                align-self: flex-start;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 250px;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+                box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Zach Wright</a>
+            <ul class="nav-links">
+                <li><a href="#investments">Investment Thoughts</a></li>
+                <li><a href="#projects">Trading Systems</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Zach Wright</h1>
+            <p>Investment analysis, quantitative trading systems, and market insights backed by data-driven research.</p>
+        </section>
+
+        <!-- Investment Thoughts Section -->
+        <section id="investments" class="investments">
+            <h2 class="section-title">Investment Thoughts</h2>
+            <p class="section-subtitle">
+                Market analysis, investment strategies, and economic insights based on quantitative research and data analysis.
+            </p>
+            
+            <div class="investment-posts">
+                <!-- Investment Post 1 -->
+                <article class="investment-post">
+                    <div class="post-date">
+                        <span class="month">Aug</span>
+                        <span class="day">10</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="post-content">
+                        <h3>Algorithmic Trading in Volatile Markets</h3>
+                        <p>Analysis of how quantitative strategies perform during high volatility periods. Examining risk management techniques and adaptive algorithms that can navigate uncertain market conditions while maintaining consistent returns.</p>
+                        <div class="post-tags">
+                            <span>Algorithmic Trading</span>
+                            <span>Risk Management</span>
+                            <span>Volatility</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Investment Post 2 -->
+                <article class="investment-post">
+                    <div class="post-date">
+                        <span class="month">Aug</span>
+                        <span class="day">05</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="post-content">
+                        <h3>Market Microstructure and Execution Algorithms</h3>
+                        <p>Deep dive into order book dynamics and how high-frequency data can inform better execution strategies. Exploring the impact of market makers and the role of latency in modern trading systems.</p>
+                        <div class="post-tags">
+                            <span>Market Microstructure</span>
+                            <span>Execution</span>
+                            <span>High Frequency</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Investment Post 3 -->
+                <article class="investment-post">
+                    <div class="post-date">
+                        <span class="month">Jul</span>
+                        <span class="day">28</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="post-content">
+                        <h3>Factor Investing with Machine Learning</h3>
+                        <p>How machine learning techniques can enhance traditional factor models. Examining dynamic factor exposure and the potential for adaptive portfolio construction in changing market regimes.</p>
+                        <div class="post-tags">
+                            <span>Factor Investing</span>
+                            <span>Machine Learning</span>
+                            <span>Portfolio Construction</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2 class="section-title">Quantitative Trading Systems</h2>
+            <p class="section-subtitle">
+                Trading bots and quantitative systems I've developed for systematic market analysis and automated execution.
+            </p>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Statistical Arbitrage Bot</h3>
+                    <p>Pairs trading algorithm that identifies statistical relationships between correlated assets and executes mean-reversion strategies with dynamic position sizing and risk controls.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Interactive Brokers API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Momentum Trading System</h3>
+                    <p>Multi-timeframe momentum strategy with adaptive parameters that automatically adjusts to market conditions. Includes backtesting framework and real-time execution capabilities.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TA-Lib</span>
+                        <span class="tech-tag">Zipline</span>
+                        <span class="tech-tag">Alpha Architect</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>ML-Driven Options Strategy</h3>
+                    <p>Machine learning model that predicts short-term volatility to optimize options strategies. Uses ensemble methods and real-time market data for dynamic strategy selection.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">QuantLib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Market Data Pipeline</h3>
+                    <p>Real-time data ingestion and processing system that collects, cleans, and stores market data from multiple sources. Supports both historical backtesting and live trading operations.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Apache Kafka</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Interested in discussing quantitative strategies, market analysis, or potential collaborations? Let's connect.
+            </p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/zachary-d-wright" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://x.com/ZacharyDWright" class="social-link" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-x-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="mailto:contact@zachwright.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="container">
+        <p>&copy; 2025 Zach Wright. Focused on quantitative analysis and systematic trading.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
