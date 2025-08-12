@@ -821,13 +821,6 @@
             }
         }
 
-        /* AI Chat Interface */
-        .ai-chat-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
 
         .ai-chat-toggle {
             width: 60px;
@@ -1484,27 +1477,6 @@
         <p>&copy; 2025 Zach Wright. Focused on quantitative analysis and systematic trading.</p>
     </footer>
 
-    <!-- AI Chat Interface -->
-    <div class="ai-chat-container" id="aiChatContainer">
-        <div class="ai-chat-header">
-            <span>🤖 AI Investment Assistant</span>
-            <button onclick="toggleAIChat()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">×</button>
-        </div>
-        <div class="ai-chat-messages" id="aiChatMessages">
-            <div style="margin-bottom: 1rem; padding: 0.5rem; background: rgba(138, 43, 226, 0.2); border-radius: 8px;">
-                👋 Hi! I'm your AI investment assistant. Ask me about market analysis, portfolio strategies, or any financial questions!
-            </div>
-        </div>
-        <div class="ai-chat-input">
-            <input type="text" id="aiChatInput" placeholder="Ask about markets, stocks, or strategies..." onkeypress="handleChatInput(event)">
-        </div>
-    </div>
-
-    <!-- AI Chat Toggle Button -->
-    <button class="ai-chat-toggle" onclick="toggleAIChat()">
-        🤖
-    </button>
-
     <!-- Spotify Music Integration - What's a Gremlin by SIPPY -->
     <div style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,255,136,0.3); background: rgba(0,0,0,0.8); padding: 15px;">
         <div style="color: #00ff88; font-weight: 600; font-size: 14px; margin-bottom: 10px; text-align: center;">
@@ -1578,35 +1550,8 @@
         }
 
         // AI Chat functionality
-        function toggleAIChat() {
-            const chatWindow = document.getElementById('aiChatWindow');
-            aiChatOpen = !aiChatOpen;
-            chatWindow.style.display = aiChatOpen ? 'flex' : 'none';
-        }
 
-        function sendAIMessage() {
-            const input = document.getElementById('aiChatInput');
-            const message = input.value.trim();
-            if (!message) return;
 
-            addChatMessage(message, 'user');
-            input.value = '';
-            
-            // Simulate AI thinking
-            setTimeout(() => {
-                const response = generateAIResponse(message);
-                addChatMessage(response, 'ai');
-            }, 1000);
-        }
-
-        function addChatMessage(message, sender) {
-            const messagesContainer = document.getElementById('aiChatMessages');
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('ai-message', sender);
-            messageElement.textContent = message;
-            messagesContainer.appendChild(messageElement);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        }
 
         function generateAIResponse(userMessage) {
             const message = userMessage.toLowerCase();
