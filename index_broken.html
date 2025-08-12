@@ -2238,6 +2238,172 @@
             return availabilityData;
         }
 
+        // AI-Powered Features
+        let aiInsights = [
+            "Market volatility indicates potential buying opportunities in tech sector",
+            "AI sentiment analysis shows 73% positive outlook for renewable energy stocks",
+            "Machine learning models predict 12% growth in semiconductor ETFs",
+            "Social media sentiment analysis reveals bullish momentum in cloud computing",
+            "Economic indicators suggest rotation into value stocks over next quarter"
+        ];
+
+        let currentInsightIndex = 0;
+
+        function updateAIInsight() {
+            const insightText = document.getElementById('ai-insight-text');
+            if (insightText) {
+                insightText.textContent = aiInsights[currentInsightIndex];
+                currentInsightIndex = (currentInsightIndex + 1) % aiInsights.length;
+            }
+        }
+
+        // AI Chat Functionality
+        function toggleAIChat() {
+            const chatContainer = document.getElementById('aiChatContainer');
+            const toggleBtn = document.querySelector('.ai-chat-toggle');
+            
+            if (chatContainer.style.display === 'none' || !chatContainer.style.display) {
+                chatContainer.style.display = 'flex';
+                toggleBtn.style.display = 'none';
+            } else {
+                chatContainer.style.display = 'none';
+                toggleBtn.style.display = 'block';
+            }
+        }
+
+        function handleChatInput(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('aiChatInput');
+                const messages = document.getElementById('aiChatMessages');
+                const userMessage = input.value.trim();
+                
+                if (userMessage) {
+                    // Add user message
+                    const userDiv = document.createElement('div');
+                    userDiv.style.cssText = 'margin-bottom: 1rem; padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 8px; text-align: right;';
+                    userDiv.textContent = userMessage;
+                    messages.appendChild(userDiv);
+                    
+                    // Generate AI response
+                    setTimeout(() => {
+                        const aiResponse = generateAIResponse(userMessage);
+                        const aiDiv = document.createElement('div');
+                        aiDiv.style.cssText = 'margin-bottom: 1rem; padding: 0.5rem; background: rgba(138, 43, 226, 0.2); border-radius: 8px;';
+                        aiDiv.innerHTML = '🤖 ' + aiResponse;
+                        messages.appendChild(aiDiv);
+                        messages.scrollTop = messages.scrollHeight;
+                    }, 1000);
+                    
+                    input.value = '';
+                    messages.scrollTop = messages.scrollHeight;
+                }
+            }
+        }
+
+        function generateAIResponse(question) {
+            const responses = {
+                'market': 'Based on current market analysis, I see strong momentum in tech and healthcare sectors. The S&P 500 is showing bullish signals.',
+                'portfolio': 'For portfolio optimization, consider a 70/20/10 split between stocks/bonds/alternatives. Diversification across sectors is key.',
+                'risk': 'Risk management is crucial. I recommend setting stop-losses at 8-10% below entry points and maintaining 3-6 months emergency fund.',
+                'crypto': 'Cryptocurrency markets are highly volatile. Consider allocating no more than 5-10% of your portfolio to crypto assets.',
+                'dividend': 'Dividend stocks can provide steady income. Look for companies with 20+ year dividend growth history and payout ratios under 60%.',
+                'default': 'That\'s an interesting question! Based on my analysis of market data and trends, I\'d recommend researching fundamentals and technical indicators before making investment decisions.'
+            };
+            
+            const lowerQuestion = question.toLowerCase();
+            for (let key in responses) {
+                if (lowerQuestion.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses['default'];
+        }
+
+        // Voice Command Functionality
+        let recognition;
+        let isListening = false;
+
+        function startVoiceCommand() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('Speech recognition not supported in this browser. Try Chrome!');
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            const voiceBtn = document.getElementById('voiceBtn');
+            
+            if (!isListening) {
+                recognition.start();
+                isListening = true;
+                voiceBtn.classList.add('listening');
+                voiceBtn.innerHTML = '🔴';
+                
+                recognition.onresult = function(event) {
+                    const command = event.results[0][0].transcript.toLowerCase();
+                    executeVoiceCommand(command);
+                };
+                
+                recognition.onend = function() {
+                    isListening = false;
+                    voiceBtn.classList.remove('listening');
+                    voiceBtn.innerHTML = '🎤';
+                };
+            } else {
+                recognition.stop();
+                isListening = false;
+                voiceBtn.classList.remove('listening');
+                voiceBtn.innerHTML = '🎤';
+            }
+        }
+
+        function executeVoiceCommand(command) {
+            if (command.includes('show chat') || command.includes('open chat')) {
+                toggleAIChat();
+            } else if (command.includes('scroll to') || command.includes('go to')) {
+                if (command.includes('investment') || command.includes('thoughts')) {
+                    document.getElementById('investments').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('holdings')) {
+                    document.getElementById('holdings').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('lessons') || command.includes('losers')) {
+                    document.getElementById('lessons').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('projects') || command.includes('trading')) {
+                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('contact')) {
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Send voice command to AI chat
+                const chatInput = document.getElementById('aiChatInput');
+                chatInput.value = command;
+                handleChatInput({ key: 'Enter' });
+                toggleAIChat(); // Open chat to show response
+            }
+        }
+
+        // Sentiment Analysis (simulation)
+        function analyzeSentiment(text) {
+            const positiveWords = ['bullish', 'growth', 'profit', 'gain', 'up', 'strong', 'buy', 'optimistic'];
+            const negativeWords = ['bearish', 'decline', 'loss', 'down', 'weak', 'sell', 'pessimistic', 'crash'];
+            
+            const words = text.toLowerCase().split(' ');
+            let positiveScore = 0;
+            let negativeScore = 0;
+            
+            words.forEach(word => {
+                if (positiveWords.includes(word)) positiveScore++;
+                if (negativeWords.includes(word)) negativeScore++;
+            });
+            
+            if (positiveScore > negativeScore) return 'positive';
+            if (negativeScore > positiveScore) return 'negative';
+            return 'neutral';
+        }
+
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
