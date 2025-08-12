@@ -1760,14 +1760,125 @@
             });
         }, observerOptions);
 
-        // Enhanced Real-Time Portfolio Data with Multiple API Sources
+        // Enhanced Portfolio Data with Backend Integration
         async function fetchPortfolioFundamentals() {
             const fundamentalsGrid = document.getElementById('fundamentals-grid');
             if (!fundamentalsGrid) return;
 
             // Show loading state
-            fundamentalsGrid.innerHTML = '<div style="text-align: center; color: #00ff88; padding: 2rem; font-size: 1.1rem;">📊 Loading real-time portfolio fundamentals...</div>';
+            fundamentalsGrid.innerHTML = '<div style="text-align: center; color: #00ff88; padding: 2rem; font-size: 1.1rem;">📊 Loading portfolio fundamentals...</div>';
 
+            try {
+                // Try to load data from backend first
+                const portfolioData = await loadBackendPortfolioData();
+                
+                if (portfolioData && Object.keys(portfolioData).length > 0) {
+                    // Clear loading state
+                    fundamentalsGrid.innerHTML = '';
+                    
+                    // Create cards with backend data
+                    Object.values(portfolioData).forEach(stockData => {
+                        if (stockData && stockData.symbol) {
+                            createPortfolioCard(stockData, fundamentalsGrid);
+                        }
+                    });
+                    
+                    // Show last update time
+                    const lastUpdate = await getLastUpdateTime();
+                    if (lastUpdate) {
+                        const updateInfo = document.createElement('div');
+                        updateInfo.style.cssText = 'text-align: center; color: rgba(0,255,136,0.6); font-size: 0.9rem; margin-top: 1rem;';
+                        updateInfo.innerHTML = `📊 Last updated: ${lastUpdate}`;
+                        fundamentalsGrid.appendChild(updateInfo);
+                    }
+                    
+                } else {
+                    // Fallback to live API calls if backend data unavailable
+                    console.log('Backend data unavailable, falling back to live APIs...');
+                    await fetchLivePortfolioData(fundamentalsGrid);
+                }
+
+            } catch (error) {
+                console.error('Error loading portfolio data:', error);
+                
+                // Ultimate fallback to static data
+                fundamentalsGrid.innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 2rem;">⚠️ Loading cached data...</div>';
+                await loadStaticPortfolioData(fundamentalsGrid);
+            }
+        }
+
+        // Load portfolio data from backend JSON files
+        async function loadBackendPortfolioData() {
+            try {
+                const response = await fetch('./data/portfolio_fundamentals.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = await response.json();
+                
+                // Convert backend data format to frontend format
+                const convertedData = {};
+                for (const [symbol, stockData] of Object.entries(data)) {
+                    convertedData[symbol] = {
+                        symbol: stockData.symbol,
+                        companyName: getCompanyName(stockData.symbol),
+                        price: stockData.price,
+                        change: stockData.change,
+                        changePercent: stockData.change_percent,
+                        marketCap: stockData.market_cap,
+                        peRatio: stockData.pe_ratio,
+                        dividendYield: stockData.dividend_yield,
+                        bookValue: stockData.book_value,
+                        eps: stockData.eps,
+                        revenue: stockData.revenue,
+                        profitMargin: stockData.profit_margin,
+                        debtToEquity: stockData.debt_to_equity,
+                        roe: stockData.roe,
+                        roa: stockData.roa,
+                        currentRatio: stockData.current_ratio,
+                        quickRatio: stockData.quick_ratio,
+                        priceToBook: stockData.price_to_book,
+                        priceToSales: stockData.price_to_sales,
+                        beta: stockData.beta,
+                        fiftyTwoWeekHigh: stockData['52_week_high'],
+                        fiftyTwoWeekLow: stockData['52_week_low'],
+                        volume: stockData.volume,
+                        avgVolume: stockData.avg_volume,
+                        lastUpdated: stockData.last_updated
+                    };
+                }
+                
+                return convertedData;
+            } catch (error) {
+                console.log('Backend data not available:', error.message);
+                return null;
+            }
+        }
+
+        // Get last update timestamp
+        async function getLastUpdateTime() {
+            try {
+                const response = await fetch('./data/last_update.json');
+                if (!response.ok) return null;
+                
+                const data = await response.json();
+                const updateDate = new Date(data.last_update);
+                return updateDate.toLocaleString('en-US', {
+                    weekday: 'short',
+                    year: 'numeric',
+                    month: 'short', 
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    timeZoneName: 'short'
+                });
+            } catch (error) {
+                return null;
+            }
+        }
+
+        // Fallback to live API calls when backend data is unavailable
+        async function fetchLivePortfolioData(fundamentalsGrid) {
             // Portfolio symbols to fetch
             const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP'];
             
@@ -1794,12 +1905,34 @@
                 });
 
             } catch (error) {
-                console.error('Error fetching portfolio data:', error);
-                fundamentalsGrid.innerHTML = '<div style="text-align: center; color: #ff6b6b; padding: 2rem;">⚠️ API rate limits reached. Displaying cached data...</div>';
+                console.error('Error fetching live portfolio data:', error);
                 
                 // Load all static data as fallback
                 await loadStaticPortfolioData(fundamentalsGrid);
             }
+        }
+
+        // Get company name for a given symbol
+        function getCompanyName(symbol) {
+            const companyNames = {
+                'PLTR': 'Palantir Technologies Inc.',
+                'NVDA': 'NVIDIA Corporation',
+                'OXY': 'Occidental Petroleum Corporation',
+                'AMZN': 'Amazon.com Inc.',
+                'BRK.B': 'Berkshire Hathaway Inc. Class B',
+                'META': 'Meta Platforms, Inc.',
+                'SPGI': 'S&P Global Inc.',
+                'AAPL': 'Apple Inc.',
+                'GOOGL': 'Alphabet Inc. Class A',
+                'SNOW': 'Snowflake Inc.',
+                'C': 'Citigroup Inc.',
+                'BAC': 'Bank of America Corporation',
+                'SIRI': 'Sirius XM Holdings Inc.',
+                'LLYVK': 'Liberty Media Corporation',
+                'NU': 'Nu Holdings Ltd.',
+                'UNP': 'Union Pacific Corporation'
+            };
+            return companyNames[symbol] || symbol;
         }
 
         // Comprehensive data fetching using multiple free APIs

@@ -1,0 +1,38 @@
+{
+  "last_updated": "2025-08-12T09:20:00.000000",
+  "indices": {
+    "^GSPC": {
+      "name": "S&P 500",
+      "price": 5543.22,
+      "change": 12.45,
+      "change_percent": 0.22
+    },
+    "^DJI": {
+      "name": "Dow Jones",
+      "price": 40003.59,
+      "change": -45.67,
+      "change_percent": -0.11
+    },
+    "^IXIC": {
+      "name": "Nasdaq",
+      "price": 17133.13,
+      "change": 89.23,
+      "change_percent": 0.52
+    },
+    "^RUT": {
+      "name": "Russell 2000",
+      "price": 2234.56,
+      "change": 5.67,
+      "change_percent": 0.25
+    },
+    "^VIX": {
+      "name": "VIX",
+      "price": 15.23,
+      "change": -0.89,
+      "change_percent": -5.53
+    }
+  },
+  "market_status": "closed",
+  "fear_greed_index": 62,
+  "volatility_index": 15.23
+}
