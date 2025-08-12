@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zach Wright - Software Engineer & Investment Analyst. Sharing insights on technology, investments, and innovation.">
+    <meta name="keywords" content="software engineer, investment analysis, technology, AI, automation, web development">
+    <meta name="author" content="Zach Wright">
+    <title>Zach Wright - Software Engineer & Investment Analyst</title>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://zwright8.github.io/personal_site/">
+    <meta property="og:title" content="Zach Wright - Software Engineer & Investment Analyst">
+    <meta property="og:description" content="Sharing insights on technology, investments, and innovation.">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://zwright8.github.io/personal_site/">
+    <meta property="twitter:title" content="Zach Wright - Software Engineer & Investment Analyst">
+    <meta property="twitter:description" content="Sharing insights on technology, investments, and innovation.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">ZW</a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#investments" class="nav-link">Investments</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#reading" class="nav-link">Reading</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="hero-greeting">Hello, I'm</span>
+                <span class="hero-name">Zach Wright</span>
+            </h1>
+            <h2 class="hero-tagline">Innovate. Automate. Dominate.</h2>
+            <p class="hero-description">
+                Software Engineer passionate about AI, automation, and investment analysis. 
+                Building the future through technology while analyzing market opportunities.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch</a>
+                <a href="assets/resume.pdf" class="btn btn-secondary" download>
+                    <i class="fas fa-download"></i> Download CV
+                </a>
+            </div>
+            <div class="hero-social">
+                <a href="https://github.com/zwright8" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/zachwright" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:zach@example.com" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="about-intro">
+                        I'm a software engineer with a passion for creating innovative solutions that bridge 
+                        the gap between technology and finance. My journey in tech began with a fascination 
+                        for automation and has evolved into a comprehensive expertise in AI, web development, 
+                        and investment analysis.
+                    </p>
+                    <p>
+                        When I'm not coding or analyzing market trends, you'll find me exploring the latest 
+                        developments in artificial intelligence, reading investment research, or working on 
+                        personal projects that combine my technical skills with financial insights.
+                    </p>
+                    <div class="skills-container">
+                        <h3>Core Technologies</h3>
+                        <div class="skills-grid">
+                            <div class="skill-item">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>Databases</span>
+                            </div>
+                            <div class="skill-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>Cloud Platforms</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/profile.jpg" alt="Zach Wright - Software Engineer and Investment Analyst" />
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Engineer</h3>
+                        <h4>Tech Innovations Inc.</h4>
+                        <span class="timeline-date">2022 - Present</span>
+                        <p>Leading development of AI-powered automation tools and financial analysis platforms. 
+                        Mentoring junior developers and architecting scalable solutions.</p>
+                        <ul>
+                            <li>Developed machine learning models for investment analysis</li>
+                            <li>Built real-time data processing pipelines</li>
+                            <li>Improved system performance by 40% through optimization</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Software Engineer</h3>
+                        <h4>FinTech Solutions</h4>
+                        <span class="timeline-date">2020 - 2022</span>
+                        <p>Specialized in building financial applications and trading platforms. 
+                        Collaborated with quantitative analysts to implement trading algorithms.</p>
+                        <ul>
+                            <li>Built responsive web applications using React and Node.js</li>
+                            <li>Integrated with financial APIs and market data feeds</li>
+                            <li>Implemented automated testing and CI/CD pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Junior Developer</h3>
+                        <h4>StartUp Ventures</h4>
+                        <span class="timeline-date">2019 - 2020</span>
+                        <p>Started my journey in web development, focusing on full-stack JavaScript development 
+                        and learning the fundamentals of software architecture.</p>
+                        <ul>
+                            <li>Contributed to multiple client projects</li>
+                            <li>Learned modern development practices and tools</li>
+                            <li>Participated in code reviews and team collaboration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-filter">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Dev</button>
+                <button class="filter-btn" data-filter="ai">AI/ML</button>
+                <button class="filter-btn" data-filter="fintech">FinTech</button>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-category="ai fintech">
+                    <div class="project-image">
+                        <img src="assets/projects/investment-analyzer.jpg" alt="AI Investment Analyzer" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/zwright8/investment-analyzer" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>AI Investment Analyzer</h3>
+                        <p>Machine learning platform that analyzes market trends and provides investment recommendations using sentiment analysis and technical indicators.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>TensorFlow</span>
+                            <span>React</span>
+                            <span>API Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="web">
+                    <div class="project-image">
+                        <img src="assets/projects/portfolio-tracker.jpg" alt="Portfolio Tracker" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/zwright8/portfolio-tracker" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Portfolio Tracker</h3>
+                        <p>Real-time investment portfolio tracking application with advanced analytics, performance metrics, and automated reporting features.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Chart.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="ai">
+                    <div class="project-image">
+                        <img src="assets/projects/automation-suite.jpg" alt="Automation Suite" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/zwright8/automation-suite" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Business Automation Suite</h3>
+                        <p>Comprehensive automation platform that streamlines business processes using AI-powered workflows and intelligent decision making.</p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>FastAPI</span>
+                            <span>OpenAI</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card" data-category="fintech web">
+                    <div class="project-image">
+                        <img src="assets/projects/market-dashboard.jpg" alt="Market Dashboard" />
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/zwright8/market-dashboard" target="_blank">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="#" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3>Real-time Market Dashboard</h3>
+                        <p>Interactive financial dashboard displaying real-time market data, news sentiment, and custom watchlists with advanced filtering capabilities.</p>
+                        <div class="project-tech">
+                            <span>Vue.js</span>
+                            <span>WebSocket</span>
+                            <span>D3.js</span>
+                            <span>Express</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Thoughts Section -->
+    <section id="investments" class="investments">
+        <div class="container">
+            <h2 class="section-title">Investment Thoughts</h2>
+            <p class="section-subtitle">My latest analysis and insights on market trends, emerging technologies, and investment opportunities.</p>
+            
+            <div class="investment-posts">
+                <article class="investment-post">
+                    <div class="post-date">
+                        <span class="month">Aug</span>
+                        <span class="day">10</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="post-content">
+                        <h3><a href="blog/ai-investment-landscape-2025.html">The AI Investment Landscape in 2025</a></h3>
+                        <p>An in-depth analysis of artificial intelligence investment opportunities, key players, and emerging trends shaping the market. From semiconductor giants to AI startups, exploring where the smart money is flowing.</p>
+                        <div class="post-tags">
+                            <span>AI/ML</span>
+                            <span>Tech Stocks</span>
+                            <span>Market Analysis</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="investment-post">
+                    <div class="post-date">
+                        <span class="month">Aug</span>
+                        <span class="day">05</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="post-content">
+                        <h3><a href="blog/fintech-disruption-traditional-banking.html">FinTech's Disruption of Traditional Banking</a></h3>
+                        <p>Examining how financial technology companies are reshaping the banking industry, creating new investment opportunities while challenging established institutions.</p>
+                        <div class="post-tags">
+                            <span>FinTech</span>
+                            <span>Banking</span>
+                            <span>Innovation</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="investment-post">
+                    <div class="post-date">
+                        <span class="month">Jul</span>
+                        <span class="day">28</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="post-content">
+                        <h3><a href="blog/sustainable-tech-investments.html">Sustainable Technology: The Next Investment Frontier</a></h3>
+                        <p>Analyzing the growing importance of ESG factors in tech investments and identifying companies leading the charge in sustainable innovation.</p>
+                        <div class="post-tags">
+                            <span>ESG</span>
+                            <span>Clean Tech</span>
+                            <span>Sustainability</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="investment-cta">
+                <a href="blog.html" class="btn btn-primary">View All Investment Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Section -->
+    <section id="reading" class="reading">
+        <div class="container">
+            <h2 class="section-title">Currently Reading</h2>
+            <p class="section-subtitle">Books and articles that are shaping my thinking on technology, investing, and innovation.</p>
+            
+            <div class="reading-grid">
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="assets/books/intelligent-investor.jpg" alt="The Intelligent Investor book cover" />
+                    </div>
+                    <div class="book-info">
+                        <h3>The Intelligent Investor</h3>
+                        <p class="author">by Benjamin Graham</p>
+                        <p class="book-description">
+                            The classic text on value investing, providing timeless principles for 
+                            making sound investment decisions in any market environment.
+                        </p>
+                        <div class="reading-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                            <span class="progress-text">75% complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="assets/books/life-3-0.jpg" alt="Life 3.0 book cover" />
+                    </div>
+                    <div class="book-info">
+                        <h3>Life 3.0</h3>
+                        <p class="author">by Max Tegmark</p>
+                        <p class="book-description">
+                            Exploring the future of artificial intelligence and its potential impact 
+                            on humanity, technology, and society.
+                        </p>
+                        <div class="reading-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 40%"></div>
+                            </div>
+                            <span class="progress-text">40% complete</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-card">
+                    <div class="book-cover">
+                        <img src="assets/books/zero-to-one.jpg" alt="Zero to One book cover" />
+                    </div>
+                    <div class="book-info">
+                        <h3>Zero to One</h3>
+                        <p class="author">by Peter Thiel</p>
+                        <p class="book-description">
+                            Notes on startups and building the future, focusing on creating 
+                            unique value and monopolistic advantages in business.
+                        </p>
+                        <div class="reading-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                            <span class="progress-text">90% complete</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reading-list">
+                <h3>Reading List</h3>
+                <ul>
+                    <li><span class="book-title">"Thinking, Fast and Slow"</span> by Daniel Kahneman</li>
+                    <li><span class="book-title">"The Black Swan"</span> by Nassim Nicholas Taleb</li>
+                    <li><span class="book-title">"Superintelligence"</span> by Nick Bostrom</li>
+                    <li><span class="book-title">"The Lean Startup"</span> by Eric Ries</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <h2 class="section-title">Latest Blog Posts</h2>
+            <p class="section-subtitle">Thoughts on AI, automation, software development, and the future of technology.</p>
+            
+            <div class="blog-grid">
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="assets/blog/ai-automation-future.jpg" alt="AI and Automation in the Future of Work" />
+                        <div class="blog-date">Aug 12, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">AI & Automation</div>
+                        <h3><a href="blog/ai-automation-future-work.html">AI and Automation: Reshaping the Future of Work</a></h3>
+                        <p>Exploring how artificial intelligence and automation technologies are transforming industries, creating new opportunities while disrupting traditional employment models.</p>
+                        <div class="blog-meta">
+                            <span class="read-time">5 min read</span>
+                            <div class="blog-tags">
+                                <span>AI</span>
+                                <span>Future of Work</span>
+                                <span>Technology</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="assets/blog/building-scalable-apis.jpg" alt="Building Scalable APIs" />
+                        <div class="blog-date">Aug 08, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">Software Development</div>
+                        <h3><a href="blog/building-scalable-apis.html">Building Scalable APIs: Best Practices and Patterns</a></h3>
+                        <p>A comprehensive guide to designing and implementing APIs that can handle growth, maintain performance, and provide excellent developer experience.</p>
+                        <div class="blog-meta">
+                            <span class="read-time">8 min read</span>
+                            <div class="blog-tags">
+                                <span>APIs</span>
+                                <span>Architecture</span>
+                                <span>Best Practices</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-image">
+                        <img src="assets/blog/machine-learning-finance.jpg" alt="Machine Learning in Finance" />
+                        <div class="blog-date">Aug 03, 2025</div>
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-category">FinTech</div>
+                        <h3><a href="blog/machine-learning-finance.html">Machine Learning Applications in Modern Finance</a></h3>
+                        <p>Examining how ML algorithms are revolutionizing financial services, from risk assessment to algorithmic trading and fraud detection.</p>
+                        <div class="blog-meta">
+                            <span class="read-time">7 min read</span>
+                            <div class="blog-tags">
+                                <span>Machine Learning</span>
+                                <span>Finance</span>
+                                <span>Innovation</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="blog-cta">
+                <a href="blog.html" class="btn btn-primary">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">
+                Let's discuss technology, investments, or potential collaborations. 
+                I'm always interested in connecting with like-minded professionals.
+            </p>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email</h3>
+                            <p><a href="mailto:zach@example.com">zach@example.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p><a href="https://linkedin.com/in/zachwright" target="_blank">linkedin.com/in/zachwright</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fab fa-github"></i>
+                        <div>
+                            <h3>GitHub</h3>
+                            <p><a href="https://github.com/zwright8" target="_blank">github.com/zwright8</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Location</h3>
+                            <p>San Francisco Bay Area, CA</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Zach Wright</h3>
+                    <p>Software Engineer & Investment Analyst</p>
+                    <p>&copy; 2025 Zach Wright. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://github.com/zwright8" target="_blank" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/zachwright" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:zach@example.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

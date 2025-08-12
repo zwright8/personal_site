@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://zwright8.github.io/personal_site/sitemap.xml
+
+# Disallow certain directories (if any)
+# Disallow: /private/
+# Disallow: /temp/
+
+# Allow specific bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay (optional)
+Crawl-delay: 1
