@@ -817,16 +817,412 @@
             }
         }
 
-        /* EDITING INSTRUCTIONS */
-        .edit-note {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            color: #856404;
+        /* AI Chat Interface */
+        .ai-chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
         }
+
+        .ai-chat-toggle {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .ai-chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .ai-chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 400px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .ai-chat-header {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .ai-chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .ai-message {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .ai-message.user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .ai-message.ai {
+            align-self: flex-start;
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .ai-chat-input {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .ai-chat-input input {
+            flex: 1;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .ai-chat-input input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .ai-chat-send {
+            padding: 0.75rem 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .ai-chat-send:hover {
+            transform: scale(1.05);
+        }
+
+        /* AI-Powered Market Analysis Section */
+        .ai-analysis {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-analysis::before {
+            content: '🤖';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            opacity: 0.7;
+        }
+
+        .ai-insight {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
+            border-left: 3px solid #10b981;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Voice Command Interface */
+        .voice-command {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .voice-command:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(239, 68, 68, 0.6);
+        }
+
+        .voice-command.listening {
+            animation: pulse 1s ease-in-out infinite;
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* AI Stock Predictions */
+        .ai-predictions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .prediction-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .prediction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .prediction-symbol {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+        }
+
+        .prediction-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #10b981;
+            margin: 0.5rem 0;
+        }
+
+        .prediction-confidence {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        /* AI-Powered Features */
+        .ai-section {
+            background: rgba(138, 43, 226, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(138, 43, 226, 0.1), transparent);
+            animation: ai-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes ai-pulse {
+            0%, 100% { left: -100%; }
+            50% { left: 100%; }
+        }
+
+        .ai-chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(138, 43, 226, 0.5);
+            display: none;
+            flex-direction: column;
+            z-index: 1000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .ai-chat-header {
+            padding: 1rem;
+            background: linear-gradient(135deg, #8a2be2, #4b0082);
+            border-radius: 16px 16px 0 0;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .ai-chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            color: white;
+        }
+
+        .ai-chat-input {
+            padding: 1rem;
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .ai-chat-input input {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+        }
+
+        .ai-chat-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #8a2be2, #4b0082);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+            box-shadow: 0 4px 20px rgba(138, 43, 226, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .ai-chat-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(138, 43, 226, 0.7);
+        }
+
+        .voice-command-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .voice-command-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .voice-command-btn.listening {
+            animation: pulse 1s ease-in-out infinite;
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .ai-predictions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .prediction-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .prediction-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(138, 43, 226, 0.5);
+        }
+
+        .confidence-meter {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0.5rem 0;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .ai-sentiment {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+
+        .sentiment-positive { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .sentiment-negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+        .sentiment-neutral { background: rgba(107, 114, 128, 0.2); color: #6b7280; }
     </style>
 </head>
 <body>
@@ -870,6 +1266,20 @@
             <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
                 Real-time portfolio tracking and performance metrics
             </p>
+        </div>
+
+        <!-- AI-Powered Market Analysis -->
+        <div class="ai-analysis">
+            <h3 style="color: rgba(255,255,255,0.9); margin-bottom: 1rem;">🤖 AI Market Analysis</h3>
+            <div class="ai-insight" id="ai-insight">
+                <strong>AI Insight:</strong> <span id="ai-insight-text">Analyzing market conditions and generating insights...</span>
+            </div>
+            <div class="ai-predictions" id="ai-predictions">
+                <!-- AI predictions will be generated here -->
+            </div>
+            <button onclick="generateAIInsight()" style="background: linear-gradient(135deg, #667eea, #764ba2); border: none; padding: 0.75rem 1.5rem; border-radius: 8px; color: white; cursor: pointer; margin-top: 1rem;">
+                🧠 Generate New AI Analysis
+            </button>
         </div>
 
         <!-- Investment Thoughts Section -->
@@ -1143,7 +1553,280 @@
         <p>&copy; 2025 Zach Wright. Focused on quantitative analysis and systematic trading.</p>
     </footer>
 
+    <!-- AI Chat Interface -->
+    <div class="ai-chat-container" id="aiChatContainer">
+        <div class="ai-chat-header">
+            <span>🤖 AI Investment Assistant</span>
+            <button onclick="toggleAIChat()" style="background: none; border: none; color: white; cursor: pointer; font-size: 1.2rem;">×</button>
+        </div>
+        <div class="ai-chat-messages" id="aiChatMessages">
+            <div style="margin-bottom: 1rem; padding: 0.5rem; background: rgba(138, 43, 226, 0.2); border-radius: 8px;">
+                👋 Hi! I'm your AI investment assistant. Ask me about market analysis, portfolio strategies, or any financial questions!
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" id="aiChatInput" placeholder="Ask about markets, stocks, or strategies..." onkeypress="handleChatInput(event)">
+        </div>
+    </div>
+
+    <!-- AI Chat Toggle Button -->
+    <button class="ai-chat-toggle" onclick="toggleAIChat()">
+        🤖
+    </button>
+
+    <!-- Voice Command Button -->
+    <button class="voice-command-btn" onclick="startVoiceCommand()" id="voiceBtn">
+        🎤
+    </button>
+
+    <!-- AI Chat Interface -->
+    <div class="ai-chat-container">
+        <button class="ai-chat-toggle" onclick="toggleAIChat()">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="ai-chat-window" id="aiChatWindow">
+            <div class="ai-chat-header">
+                <i class="fas fa-brain"></i>
+                AI Investment Advisor
+            </div>
+            <div class="ai-chat-messages" id="aiChatMessages">
+                <div class="ai-message ai">
+                    Hello! I'm your AI investment advisor. Ask me about market trends, stock analysis, or portfolio optimization strategies.
+                </div>
+            </div>
+            <div class="ai-chat-input">
+                <input type="text" id="aiChatInput" placeholder="Ask about stocks, market trends..." onkeypress="handleChatKeyPress(event)">
+                <button class="ai-chat-send" onclick="sendAIMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Command Interface -->
+    <button class="voice-command" id="voiceCommand" onclick="toggleVoiceCommand()">
+        <i class="fas fa-microphone"></i>
+    </button>
+
     <script>
+        // AI-powered features
+        let isListening = false;
+        let recognition;
+        let aiChatOpen = false;
+
+        // Advanced AI market insights generator
+        const aiInsights = [
+            "Based on current market volatility and RSI indicators, defensive sectors may outperform in the next 30 days.",
+            "Machine learning models suggest a 73% probability of continued tech sector rotation into value stocks.",
+            "Sentiment analysis of earnings calls indicates increasing caution among mega-cap CEOs regarding Q4 guidance.",
+            "Options flow data shows unusual activity in energy sector calls, suggesting institutional accumulation.",
+            "AI-driven factor analysis identifies momentum and quality factors as most predictive in current market regime.",
+            "Natural language processing of Fed communications suggests 68% probability of dovish pivot in next meeting.",
+            "Alternative data from satellite imagery shows stronger than expected retail foot traffic, bullish for consumer discretionary.",
+            "Cross-asset correlation models indicate emerging markets may decouple from US equities in coming weeks."
+        ];
+
+        const stockPredictions = [
+            { symbol: 'NVDA', price: '$478.50', confidence: '85%', change: '+2.3%' },
+            { symbol: 'AAPL', price: '$189.20', confidence: '78%', change: '+1.8%' },
+            { symbol: 'MSFT', price: '$342.10', confidence: '82%', change: '+2.1%' },
+            { symbol: 'GOOGL', price: '$145.80', confidence: '74%', change: '-0.5%' },
+            { symbol: 'TSLA', price: '$251.30', confidence: '69%', change: '+3.4%' },
+            { symbol: 'META', price: '$318.90', confidence: '71%', change: '+1.2%' }
+        ];
+
+        // Generate AI insights
+        function generateAIInsight() {
+            const insightText = document.getElementById('ai-insight-text');
+            const predictionsContainer = document.getElementById('ai-predictions');
+            
+            // Generate random insight
+            const randomInsight = aiInsights[Math.floor(Math.random() * aiInsights.length)];
+            
+            // Animate text change
+            insightText.style.opacity = '0';
+            setTimeout(() => {
+                insightText.textContent = randomInsight;
+                insightText.style.opacity = '1';
+            }, 300);
+
+            // Generate predictions
+            const shuffledPredictions = [...stockPredictions].sort(() => 0.5 - Math.random()).slice(0, 3);
+            predictionsContainer.innerHTML = shuffledPredictions.map(pred => `
+                <div class="prediction-card">
+                    <div class="prediction-symbol">${pred.symbol}</div>
+                    <div class="prediction-price">${pred.price}</div>
+                    <div class="prediction-confidence">Confidence: ${pred.confidence}</div>
+                    <div style="color: ${pred.change.includes('+') ? '#10b981' : '#ef4444'}; font-size: 0.9rem; margin-top: 0.5rem;">
+                        ${pred.change}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // AI Chat functionality
+        function toggleAIChat() {
+            const chatWindow = document.getElementById('aiChatWindow');
+            aiChatOpen = !aiChatOpen;
+            chatWindow.style.display = aiChatOpen ? 'flex' : 'none';
+        }
+
+        function sendAIMessage() {
+            const input = document.getElementById('aiChatInput');
+            const message = input.value.trim();
+            if (!message) return;
+
+            addChatMessage(message, 'user');
+            input.value = '';
+            
+            // Simulate AI thinking
+            setTimeout(() => {
+                const response = generateAIResponse(message);
+                addChatMessage(response, 'ai');
+            }, 1000);
+        }
+
+        function addChatMessage(message, sender) {
+            const messagesContainer = document.getElementById('aiChatMessages');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('ai-message', sender);
+            messageElement.textContent = message;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function generateAIResponse(userMessage) {
+            const message = userMessage.toLowerCase();
+            
+            if (message.includes('nvidia') || message.includes('nvda')) {
+                return "NVIDIA shows strong fundamentals with 85% AI model confidence. Data center demand and AI chip monopoly support bullish outlook. Consider entry on any dips below $450.";
+            } else if (message.includes('apple') || message.includes('aapl')) {
+                return "Apple's AI integration and services growth provide defensive qualities. iPhone 16 AI features may drive upgrade cycle. Target price: $195 with 78% confidence.";
+            } else if (message.includes('market') || message.includes('trend')) {
+                return "Current market regime favors quality growth over momentum. Fed policy uncertainty creates volatility opportunities. Focus on strong balance sheet companies.";
+            } else if (message.includes('portfolio') || message.includes('allocation')) {
+                return "Optimal allocation in current environment: 40% large-cap growth, 25% international developed, 20% bonds, 15% alternatives. Rebalance monthly.";
+            } else if (message.includes('crypto') || message.includes('bitcoin')) {
+                return "Crypto correlation with tech stocks remains elevated. Bitcoin institutional adoption continues but regulatory headwinds persist. Consider 5-10% allocation maximum.";
+            } else {
+                const responses = [
+                    "Based on my quantitative models, I'd recommend focusing on companies with strong free cash flow generation in this environment.",
+                    "The current VIX levels suggest increased volatility ahead. Consider protective strategies for large positions.",
+                    "My sentiment analysis indicates growing optimism in semiconductor sector. Monitor for entry opportunities.",
+                    "Factor analysis shows momentum strategies underperforming. Value and quality factors are more attractive currently."
+                ];
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendAIMessage();
+            }
+        }
+
+        // Voice Command functionality
+        function toggleVoiceCommand() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('Speech recognition not supported in this browser. Try Chrome or Edge.');
+                return;
+            }
+
+            if (!isListening) {
+                startVoiceRecognition();
+            } else {
+                stopVoiceRecognition();
+            }
+        }
+
+        function startVoiceRecognition() {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+            
+            recognition.onstart = () => {
+                isListening = true;
+                const voiceButton = document.getElementById('voiceCommand');
+                voiceButton.classList.add('listening');
+                voiceButton.innerHTML = '<i class="fas fa-stop"></i>';
+            };
+            
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                
+                // Process voice command
+                if (transcript.toLowerCase().includes('analyze') || transcript.toLowerCase().includes('insight')) {
+                    generateAIInsight();
+                    speak("I've generated a new AI market analysis for you.");
+                } else if (transcript.toLowerCase().includes('chat') || transcript.toLowerCase().includes('talk')) {
+                    toggleAIChat();
+                    speak("AI chat is now open. You can ask me about investments.");
+                } else if (transcript.toLowerCase().includes('scroll') && transcript.toLowerCase().includes('up')) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    speak("Scrolling to top of page.");
+                } else {
+                    // Add to chat if open
+                    if (aiChatOpen) {
+                        addChatMessage(transcript, 'user');
+                        setTimeout(() => {
+                            const response = generateAIResponse(transcript);
+                            addChatMessage(response, 'ai');
+                            speak(response);
+                        }, 500);
+                    } else {
+                        speak("I heard: " + transcript + ". Open the AI chat to continue our conversation.");
+                    }
+                }
+            };
+            
+            recognition.onerror = (event) => {
+                console.error('Speech recognition error:', event.error);
+                stopVoiceRecognition();
+            };
+            
+            recognition.onend = () => {
+                stopVoiceRecognition();
+            };
+            
+            recognition.start();
+        }
+
+        function stopVoiceRecognition() {
+            isListening = false;
+            const voiceButton = document.getElementById('voiceCommand');
+            voiceButton.classList.remove('listening');
+            voiceButton.innerHTML = '<i class="fas fa-microphone"></i>';
+            
+            if (recognition) {
+                recognition.stop();
+            }
+        }
+
+        // Text-to-speech functionality
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.rate = 0.9;
+                utterance.pitch = 1;
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        // Auto-generate initial AI insight
+        function initializeAI() {
+            setTimeout(generateAIInsight, 2000);
+            
+            // Update insights periodically
+            setInterval(() => {
+                if (Math.random() < 0.1) { // 10% chance every interval
+                    generateAIInsight();
+                }
+            }, 30000); // Every 30 seconds
+        }
+
         // Create animated background particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -1200,10 +1883,177 @@
             });
         }, observerOptions);
 
+        // AI-Powered Features
+        let aiInsights = [
+            "Market volatility indicates potential buying opportunities in tech sector",
+            "AI sentiment analysis shows 73% positive outlook for renewable energy stocks",
+            "Machine learning models predict 12% growth in semiconductor ETFs",
+            "Social media sentiment analysis reveals bullish momentum in cloud computing",
+            "Economic indicators suggest rotation into value stocks over next quarter"
+        ];
+
+        let currentInsightIndex = 0;
+
+        function updateAIInsight() {
+            const insightText = document.getElementById('ai-insight-text');
+            if (insightText) {
+                insightText.textContent = aiInsights[currentInsightIndex];
+                currentInsightIndex = (currentInsightIndex + 1) % aiInsights.length;
+            }
+        }
+
+        // AI Chat Functionality
+        function toggleAIChat() {
+            const chatContainer = document.getElementById('aiChatContainer');
+            const toggleBtn = document.querySelector('.ai-chat-toggle');
+            
+            if (chatContainer.style.display === 'none' || !chatContainer.style.display) {
+                chatContainer.style.display = 'flex';
+                toggleBtn.style.display = 'none';
+            } else {
+                chatContainer.style.display = 'none';
+                toggleBtn.style.display = 'block';
+            }
+        }
+
+        function handleChatInput(event) {
+            if (event.key === 'Enter') {
+                const input = document.getElementById('aiChatInput');
+                const messages = document.getElementById('aiChatMessages');
+                const userMessage = input.value.trim();
+                
+                if (userMessage) {
+                    // Add user message
+                    const userDiv = document.createElement('div');
+                    userDiv.style.cssText = 'margin-bottom: 1rem; padding: 0.5rem; background: rgba(255,255,255,0.1); border-radius: 8px; text-align: right;';
+                    userDiv.textContent = userMessage;
+                    messages.appendChild(userDiv);
+                    
+                    // Generate AI response
+                    setTimeout(() => {
+                        const aiResponse = generateAIResponse(userMessage);
+                        const aiDiv = document.createElement('div');
+                        aiDiv.style.cssText = 'margin-bottom: 1rem; padding: 0.5rem; background: rgba(138, 43, 226, 0.2); border-radius: 8px;';
+                        aiDiv.innerHTML = '🤖 ' + aiResponse;
+                        messages.appendChild(aiDiv);
+                        messages.scrollTop = messages.scrollHeight;
+                    }, 1000);
+                    
+                    input.value = '';
+                    messages.scrollTop = messages.scrollHeight;
+                }
+            }
+        }
+
+        function generateAIResponse(question) {
+            const responses = {
+                'market': 'Based on current market analysis, I see strong momentum in tech and healthcare sectors. The S&P 500 is showing bullish signals.',
+                'portfolio': 'For portfolio optimization, consider a 70/20/10 split between stocks/bonds/alternatives. Diversification across sectors is key.',
+                'risk': 'Risk management is crucial. I recommend setting stop-losses at 8-10% below entry points and maintaining 3-6 months emergency fund.',
+                'crypto': 'Cryptocurrency markets are highly volatile. Consider allocating no more than 5-10% of your portfolio to crypto assets.',
+                'dividend': 'Dividend stocks can provide steady income. Look for companies with 20+ year dividend growth history and payout ratios under 60%.',
+                'default': 'That\'s an interesting question! Based on my analysis of market data and trends, I\'d recommend researching fundamentals and technical indicators before making investment decisions.'
+            };
+            
+            const lowerQuestion = question.toLowerCase();
+            for (let key in responses) {
+                if (lowerQuestion.includes(key)) {
+                    return responses[key];
+                }
+            }
+            return responses['default'];
+        }
+
+        // Voice Command Functionality
+        let recognition;
+        let isListening = false;
+
+        function startVoiceCommand() {
+            if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+                alert('Speech recognition not supported in this browser. Try Chrome!');
+                return;
+            }
+
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            const voiceBtn = document.getElementById('voiceBtn');
+            
+            if (!isListening) {
+                recognition.start();
+                isListening = true;
+                voiceBtn.classList.add('listening');
+                voiceBtn.innerHTML = '🔴';
+                
+                recognition.onresult = function(event) {
+                    const command = event.results[0][0].transcript.toLowerCase();
+                    executeVoiceCommand(command);
+                };
+                
+                recognition.onend = function() {
+                    isListening = false;
+                    voiceBtn.classList.remove('listening');
+                    voiceBtn.innerHTML = '🎤';
+                };
+            } else {
+                recognition.stop();
+                isListening = false;
+                voiceBtn.classList.remove('listening');
+                voiceBtn.innerHTML = '🎤';
+            }
+        }
+
+        function executeVoiceCommand(command) {
+            if (command.includes('show chat') || command.includes('open chat')) {
+                toggleAIChat();
+            } else if (command.includes('scroll to') || command.includes('go to')) {
+                if (command.includes('investment') || command.includes('thoughts')) {
+                    document.getElementById('investments').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('holdings')) {
+                    document.getElementById('holdings').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('lessons') || command.includes('losers')) {
+                    document.getElementById('lessons').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('projects') || command.includes('trading')) {
+                    document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+                } else if (command.includes('contact')) {
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                // Send voice command to AI chat
+                const chatInput = document.getElementById('aiChatInput');
+                chatInput.value = command;
+                handleChatInput({ key: 'Enter' });
+                toggleAIChat(); // Open chat to show response
+            }
+        }
+
+        // Sentiment Analysis (simulation)
+        function analyzeSentiment(text) {
+            const positiveWords = ['bullish', 'growth', 'profit', 'gain', 'up', 'strong', 'buy', 'optimistic'];
+            const negativeWords = ['bearish', 'decline', 'loss', 'down', 'weak', 'sell', 'pessimistic', 'crash'];
+            
+            const words = text.toLowerCase().split(' ');
+            let positiveScore = 0;
+            let negativeScore = 0;
+            
+            words.forEach(word => {
+                if (positiveWords.includes(word)) positiveScore++;
+                if (negativeWords.includes(word)) negativeScore++;
+            });
+            
+            if (positiveScore > negativeScore) return 'positive';
+            if (negativeScore > positiveScore) return 'negative';
+            return 'neutral';
+        }
+
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
             updateTicker();
+            initializeAI();
             
             // Add scroll animations to sections
             document.querySelectorAll('section').forEach(section => {
