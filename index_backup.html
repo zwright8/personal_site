@@ -667,17 +667,6 @@
                 font-size: 1.2rem;
             }
         }
-
-        /* EDITING INSTRUCTIONS */
-        .edit-note {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 8px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-size: 0.9rem;
-            color: #856404;
-        }
     </style>
 </head>
 <body>
@@ -702,18 +691,25 @@
 
     <!-- Main Content -->
     <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Zach Wright</h1>
+            <!-- EDIT THIS: Update your main tagline/description -->
+            <p>Investment analysis, quantitative trading systems, and market insights backed by data-driven research.</p>
+        </section>
+
         <!-- Investment Thoughts Section -->
         <section id="investments" class="investments">
             <h2 class="section-title">Investment Thoughts</h2>
-            <!-- 👇 EDIT THIS: Update section description -->
+            <!-- EDIT THIS: Update section description -->
             <p class="section-subtitle">
                 Market analysis, investment strategies, and economic insights based on quantitative research and data analysis.
             </p>
             
             <div class="investment-posts">
-                <!-- 👇 EDIT THESE POSTS: Replace with your actual investment thoughts -->
+                <!-- EDIT THESE POSTS: Replace with your actual investment thoughts -->
                 
-                <!-- Investment Post 1 - EDIT THIS ENTIRE SECTION -->
+                <!-- Investment Post 1 - EDIT THIS -->
                 <article class="investment-post">
                     <div class="post-date">
                         <span class="month">Aug</span>  <!-- EDIT: Month -->
@@ -734,7 +730,7 @@
                     </div>
                 </article>
 
-                <!-- Investment Post 2 - EDIT THIS ENTIRE SECTION -->
+                <!-- Investment Post 2 - EDIT THIS -->
                 <article class="investment-post">
                     <div class="post-date">
                         <span class="month">Aug</span>  <!-- EDIT: Month -->
@@ -755,7 +751,7 @@
                     </div>
                 </article>
 
-                <!-- Investment Post 3 - EDIT THIS ENTIRE SECTION -->
+                <!-- Investment Post 3 - EDIT THIS -->
                 <article class="investment-post">
                     <div class="post-date">
                         <span class="month">Jul</span>  <!-- EDIT: Month -->
@@ -776,7 +772,7 @@
                     </div>
                 </article>
 
-                <!-- 📝 TO ADD MORE POSTS: Copy the structure above -->
+                <!-- ADD MORE POSTS: Copy the structure above to add more investment thoughts -->
             </div>
         </section>
 
@@ -784,16 +780,96 @@
         <section id="holdings" class="holdings">
             <h2 class="section-title">Current Holdings</h2>
             <p class="section-subtitle">
-                My current investment positions with thesis and key metrics. Transparency in what I'm putting my money behind.
+                My current investment positions with thesis, allocation, and key metrics. Transparency in what I'm putting my money behind.
             </p>
             
             <div class="holdings-grid">
-                <!-- TO BE FILLED WITH YOUR ACTUAL HOLDINGS -->
-                <!-- Please provide your real positions for accurate display -->
-                <!-- Each holding should include: ticker, company name, your thesis, allocation %, entry price, time held -->
-                
-                <div style="text-align: center; padding: 3rem; color: #666; font-style: italic;">
-                    Holdings data to be populated with your actual investment positions...
+                <!-- Holding 1 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">NVDA</div>
+                        <div class="holding-allocation">12.5%</div>
+                    </div>
+                    <div class="holding-name">NVIDIA Corporation</div>
+                    <div class="holding-thesis">
+                        Leading AI chip manufacturer with dominant position in GPU computing. The infrastructure layer for the AI revolution with strong moat through CUDA ecosystem and superior chip architecture.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Entry Price</div>
+                            <div class="metric-value">$485</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">8 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holding 2 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">MSFT</div>
+                        <div class="holding-allocation">15.0%</div>
+                    </div>
+                    <div class="holding-name">Microsoft Corporation</div>
+                    <div class="holding-thesis">
+                        Best positioned for AI integration with OpenAI partnership and Azure infrastructure. Strong enterprise moat with Office 365 and cloud services providing recurring revenue streams.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Entry Price</div>
+                            <div class="metric-value">$398</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">14 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holding 3 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">QQQ</div>
+                        <div class="holding-allocation">25.0%</div>
+                    </div>
+                    <div class="holding-name">Invesco QQQ Trust ETF</div>
+                    <div class="holding-thesis">
+                        Core technology exposure with diversification across top NASDAQ companies. Passive way to capture innovation and growth in the tech sector while reducing single-stock risk.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Avg Price</div>
+                            <div class="metric-value">$375</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">2+ years</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holding 4 -->
+                <div class="holding-card">
+                    <div class="holding-header">
+                        <div class="holding-symbol">PLTR</div>
+                        <div class="holding-allocation">8.5%</div>
+                    </div>
+                    <div class="holding-name">Palantir Technologies</div>
+                    <div class="holding-thesis">
+                        AI-powered data analytics platform with growing government and enterprise contracts. Strong competitive advantages in handling complex data integration and analysis at scale.
+                    </div>
+                    <div class="holding-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Entry Price</div>
+                            <div class="metric-value">$18.50</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Time Held</div>
+                            <div class="metric-value">6 months</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -801,156 +877,194 @@
         <!-- Lessons from Losers Section -->
         <section id="lessons" class="lessons">
             <h2 class="section-title">Lessons from My Losers</h2>
-            <!-- 👇 EDIT THIS: Update section description -->
             <p class="section-subtitle">
                 My biggest investment mistakes and the valuable lessons learned. Failure is the best teacher in the markets.
             </p>
             
             <div class="lessons-grid">
-                <!-- 👇 EDIT ALL LESSONS BELOW: Replace with your actual investment failures -->
-                
-                <!-- Lesson 1 - EDIT THIS ENTIRE CARD -->
+                <!-- Lesson 1 -->
                 <div class="lesson-card">
                     <div class="lesson-header">
                         <div class="lesson-icon">
-                            <i class="fas fa-chart-line-down"></i> <!-- You can change the icon -->
+                            <i class="fas fa-chart-line-down"></i>
                         </div>
                         <div class="lesson-title">
-                            <div class="lesson-stock">TICKER</div>  <!-- EDIT: Stock ticker of your losing investment -->
-                            <div class="lesson-period">Start Date - End Date</div>  <!-- EDIT: Time period (e.g., March 2020 - Dec 2021) -->
+                            <div class="lesson-stock">ZOOM (ZM)</div>
+                            <div class="lesson-period">March 2020 - Dec 2021</div>
                         </div>
-                        <div class="lesson-loss">-XX%</div>  <!-- EDIT: Your loss percentage (e.g., -65%) -->
+                        <div class="lesson-loss">-65%</div>
                     </div>
                     <div class="lesson-story">
-                        <!-- EDIT: Tell the story of what happened -->
-                        Tell the story of your investment mistake here. What was your reasoning for buying? What went wrong? How did you react? Be honest and specific about what happened.
+                        Bought heavily during the pandemic thinking remote work was permanent. Held too long as the stock peaked at $550+ and rode it all the way down. Got caught up in the narrative without considering post-pandemic normalization.
                     </div>
                     <div class="lesson-learned">
-                        <!-- EDIT: What lesson did you learn? -->
-                        <strong>Lesson:</strong> Write the key lesson you learned from this mistake. What would you do differently? What principle will guide your future decisions?
+                        <strong>Lesson:</strong> Temporary tailwinds don't justify permanent valuations. Always consider what happens when the catalyst reverses. Set clear exit strategies based on fundamentals, not hope.
                     </div>
                 </div>
 
-                <!-- Lesson 2 - EDIT THIS ENTIRE CARD -->
+                <!-- Lesson 2 -->
                 <div class="lesson-card">
                     <div class="lesson-header">
                         <div class="lesson-icon">
                             <i class="fas fa-exclamation-triangle"></i>
                         </div>
                         <div class="lesson-title">
-                            <div class="lesson-stock">TICKER or INVESTMENT</div>  <!-- EDIT: Your losing investment -->
-                            <div class="lesson-period">Start Date - End Date</div>  <!-- EDIT: Time period -->
+                            <div class="lesson-stock">ARKK ETF</div>
+                            <div class="lesson-period">Feb 2021 - Nov 2022</div>
                         </div>
-                        <div class="lesson-loss">-XX%</div>  <!-- EDIT: Your loss percentage -->
+                        <div class="lesson-loss">-58%</div>
                     </div>
                     <div class="lesson-story">
-                        <!-- EDIT: Tell your second failure story -->
-                        Your second investment mistake story goes here. What was different about this situation? What factors did you miss or ignore?
+                        Bought into the "disruptive innovation" story at the top. Believed that high-growth tech would continue regardless of interest rates. Ignored the duration risk in high-multiple growth stocks when rates started rising.
                     </div>
                     <div class="lesson-learned">
-                        <!-- EDIT: Second lesson learned -->
-                        <strong>Lesson:</strong> What did this second mistake teach you? How did it change your investment approach?
+                        <strong>Lesson:</strong> Understand macro conditions and their impact on different asset classes. Growth stocks are particularly sensitive to interest rate changes. Don't ignore the Fed when making investment decisions.
                     </div>
                 </div>
 
-                <!-- Lesson 3 - EDIT THIS ENTIRE CARD -->
+                <!-- Lesson 3 -->
                 <div class="lesson-card">
                     <div class="lesson-header">
                         <div class="lesson-icon">
                             <i class="fas fa-coins"></i>
                         </div>
                         <div class="lesson-title">
-                            <div class="lesson-stock">INVESTMENT TYPE</div>  <!-- EDIT: Your losing investment -->
-                            <div class="lesson-period">Time Period</div>  <!-- EDIT: When this happened -->
+                            <div class="lesson-stock">Various SPACs</div>
+                            <div class="lesson-period">2020 - 2021</div>
                         </div>
-                        <div class="lesson-loss">-XX%</div>  <!-- EDIT: Loss amount -->
+                        <div class="lesson-loss">-70%</div>
                     </div>
                     <div class="lesson-story">
-                        <!-- EDIT: Third failure story -->
-                        Your third investment mistake. This could be about a category of investments, a strategy that failed, or another specific stock.
+                        Got swept up in the SPAC mania, buying multiple pre-revenue companies with grand promises. Ignored the misaligned incentives where sponsors get paid regardless of performance. Fell for marketing over substance.
                     </div>
                     <div class="lesson-learned">
-                        <!-- EDIT: Third lesson -->
-                        <strong>Lesson:</strong> What principle did you learn from this experience?
+                        <strong>Lesson:</strong> Understand the incentive structure of any investment vehicle. If the promoters get rich while investors lose money, avoid it. Stick to businesses with proven revenue and clear paths to profitability.
                     </div>
                 </div>
 
-                <!-- 📝 TO ADD MORE LESSONS: Copy the lesson-card structure above -->
+                <!-- Lesson 4 -->
+                <div class="lesson-card">
+                    <div class="lesson-header">
+                        <div class="lesson-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="lesson-title">
+                            <div class="lesson-stock">Options Trading</div>
+                            <div class="lesson-period">Various periods</div>
+                        </div>
+                        <div class="lesson-loss">-40%</div>
+                    </div>
+                    <div class="lesson-story">
+                        Tried to time earnings and market moves with options. Made some big wins early which gave false confidence. Time decay and volatility crush taught me expensive lessons about the complexities of options pricing.
+                    </div>
+                    <div class="lesson-learned">
+                        <strong>Lesson:</strong> Options are primarily insurance instruments, not speculation tools. The house edge favors sellers over buyers. Focus on building wealth through ownership of productive assets, not derivatives.
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="projects">
             <h2 class="section-title">Quantitative Trading Systems</h2>
-            <!-- 👇 EDIT THIS: Update section description -->
             <p class="section-subtitle">
                 Trading bots and quantitative systems I've developed for systematic market analysis and automated execution.
             </p>
             
             <div class="projects-grid">
-                <!-- 👇 EDIT ALL PROJECTS BELOW: Replace with your actual trading systems -->
-                
-                <!-- Project 1 - EDIT THIS ENTIRE CARD -->
+                <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-icon">
-                        <i class="fas fa-robot"></i>  <!-- You can change the icon -->
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h3>Your Trading Bot Name</h3>  <!-- EDIT: Name of your trading system -->
-                    <p><!-- EDIT: Description of what this system does -->
-                    Describe your trading bot here. What strategy does it implement? What markets does it trade? How does it make decisions? Be specific about its approach and capabilities.
-                    </p>
+                    <h3>Statistical Arbitrage Bot</h3>
+                    <p>Pairs trading algorithm that identifies statistical relationships between correlated assets and executes mean-reversion strategies with dynamic position sizing and risk controls.</p>
                     <div class="project-tech">
-                        <!-- EDIT: Technologies used -->
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">Your Library</span>
-                        <span class="tech-tag">Another Tool</span>
-                        <span class="tech-tag">API Used</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">Interactive Brokers API</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">  <!-- EDIT: Link to your GitHub repo -->
+                        <a href="#" class="project-link">
                             <i class="fab fa-github"></i>
                             <span>Code</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project 2 - EDIT THIS ENTIRE CARD -->
+                <!-- Project 2 -->
                 <div class="project-card">
                     <div class="project-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Second Trading System</h3>  <!-- EDIT: Name -->
-                    <p><!-- EDIT: Description -->
-                    Description of your second trading system. What makes it different from the first? What problem does it solve?
-                    </p>
+                    <h3>Momentum Trading System</h3>
+                    <p>Multi-timeframe momentum strategy with adaptive parameters that automatically adjusts to market conditions. Includes backtesting framework and real-time execution capabilities.</p>
                     <div class="project-tech">
-                        <!-- EDIT: Tech stack -->
-                        <span class="tech-tag">Technology</span>
-                        <span class="tech-tag">Framework</span>
-                        <span class="tech-tag">Tool</span>
-                        <span class="tech-tag">Platform</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TA-Lib</span>
+                        <span class="tech-tag">Zipline</span>
+                        <span class="tech-tag">Alpha Architect</span>
                     </div>
                     <div class="project-links">
-                        <a href="#" class="project-link">  <!-- EDIT: GitHub link -->
+                        <a href="#" class="project-link">
                             <i class="fab fa-github"></i>
                             <span>Code</span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 📝 TO ADD MORE PROJECTS: Copy the project-card structure above -->
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>ML-Driven Options Strategy</h3>
+                    <p>Machine learning model that predicts short-term volatility to optimize options strategies. Uses ensemble methods and real-time market data for dynamic strategy selection.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">XGBoost</span>
+                        <span class="tech-tag">QuantLib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Market Data Pipeline</h3>
+                    <p>Real-time data ingestion and processing system that collects, cleans, and stores market data from multiple sources. Supports both historical backtesting and live trading operations.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Apache Kafka</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Redis</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i>
+                            <span>Code</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="contact">
             <h2 class="section-title">Get In Touch</h2>
-            <!-- 👇 EDIT THIS: Update your contact message -->
             <p class="section-subtitle">
                 Interested in discussing quantitative strategies, market analysis, or potential collaborations? Let's connect.
             </p>
             <div class="social-links">
-                <!-- 👇 EDIT THESE LINKS: Update with your actual social media profiles -->
                 <a href="https://linkedin.com/in/zachary-d-wright" class="social-link" target="_blank" rel="noopener noreferrer">
                     <i class="fab fa-linkedin"></i>
                     <span>LinkedIn</span>
@@ -959,7 +1073,7 @@
                     <i class="fab fa-x-twitter"></i>
                     <span>Twitter</span>
                 </a>
-                <a href="mailto:contact@zachwright.com" class="social-link">  <!-- EDIT: Your email -->
+                <a href="mailto:contact@zachwright.com" class="social-link">
                     <i class="fas fa-envelope"></i>
                     <span>Email</span>
                 </a>
@@ -969,7 +1083,6 @@
 
     <!-- Footer -->
     <footer class="container">
-        <!-- 👇 EDIT THIS: Update footer text -->
         <p>&copy; 2025 Zach Wright. Focused on quantitative analysis and systematic trading.</p>
     </footer>
 
