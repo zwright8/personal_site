@@ -1529,7 +1529,7 @@
                     <option value="NVDA">NVDA - NVIDIA</option>
                     <option value="OXY">OXY - Occidental</option>
                     <option value="AMZN">AMZN - Amazon</option>
-                    <option value="BRK.B">BRK.B - Berkshire Hathaway</option>
+                    <option value="BRK-B">BRK-B - Berkshire Hathaway</option>
                     <option value="META">META - Meta</option>
                     <option value="SPGI">SPGI - S&P Global</option>
                     <option value="AAPL">AAPL - Apple</option>
@@ -2204,7 +2204,7 @@
         // Fallback to live API calls when backend data is unavailable
         async function fetchLivePortfolioData(fundamentalsGrid) {
             // Portfolio symbols to fetch
-            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
+            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK-B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
             
             try {
                 // Fetch data concurrently from multiple sources
@@ -2243,7 +2243,7 @@
                 'NVDA': 'NVIDIA Corporation',
                 'OXY': 'Occidental Petroleum Corporation',
                 'AMZN': 'Amazon.com Inc.',
-                'BRK.B': 'Berkshire Hathaway Inc. Class B',
+                'BRK-B': 'Berkshire Hathaway Inc. Class B',
                 'META': 'Meta Platforms, Inc.',
                 'SPGI': 'S&P Global Inc.',
                 'AAPL': 'Apple Inc.',
@@ -2648,9 +2648,9 @@
                     employees: '4,500',
                     keyMetric: 'Rule of 40: 101%',
                     thesis: 'AI-powered data analytics platform with expanding commercial momentum and strong government contracts.',
-                    currentPrice: 35.24,
-                    change: 1.23,
-                    changePercent: 3.61
+                    currentPrice: 186.97,
+                    change: 4.29,
+                    changePercent: 2.35
                 },
                 'NVDA': {
                     symbol: 'NVDA',
@@ -2664,9 +2664,9 @@
                     employees: '29,600',
                     keyMetric: 'Data Center Rev: $113B',
                     thesis: 'Dominant AI chip manufacturer with pricing power and expanding data center demand.',
-                    currentPrice: 142.65,
-                    change: -2.11,
-                    changePercent: -1.46
+                    currentPrice: 183.16,
+                    change: 1.01,
+                    changePercent: 0.55
                 },
                 'OXY': {
                     symbol: 'OXY',
@@ -2700,8 +2700,8 @@
                     change: 3.22,
                     changePercent: 1.58
                 },
-                'BRK.B': {
-                    symbol: 'BRK.B',
+                'BRK-B': {
+                    symbol: 'BRK-B',
                     name: 'Berkshire Hathaway Inc. Class B',
                     sector: 'Conglomerate',
                     marketCap: '$1.01T',
@@ -2712,9 +2712,9 @@
                     employees: '396,500',
                     keyMetric: 'Book Value: $561B',
                     thesis: 'Quality conglomerate with diversified cash-generating businesses and strong capital allocation.',
-                    currentPrice: 455.23,
-                    change: 2.45,
-                    changePercent: 0.54
+                    currentPrice: 470.39,
+                    change: 5.66,
+                    changePercent: 1.22
                 },
                 'META': {
                     symbol: 'META',
@@ -2728,9 +2728,9 @@
                     employees: '67,317',
                     keyMetric: 'MAU: 3.07B users',
                     thesis: 'Leading social platform with AI advertising optimization and metaverse investments.',
-                    currentPrice: 580.92,
-                    change: -8.34,
-                    changePercent: -1.42
+                    currentPrice: 790.00,
+                    change: 24.13,
+                    changePercent: 3.15
                 },
                 'SPGI': {
                     symbol: 'SPGI',
@@ -2947,7 +2947,7 @@
 
         // Load static data as fallback
         async function loadStaticPortfolioData(container) {
-            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
+            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK-B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
             
             portfolioSymbols.forEach(symbol => {
                 const staticData = getStaticCompanyData(symbol);
@@ -2964,7 +2964,7 @@
                 'NVDA': 'NVIDIA Corporation',
                 'OXY': 'Occidental Petroleum Corporation',
                 'AMZN': 'Amazon.com, Inc.',
-                'BRK.B': 'Berkshire Hathaway Inc. Class B',
+                'BRK-B': 'Berkshire Hathaway Inc. Class B',
                 'META': 'Meta Platforms, Inc.',
                 'SPGI': 'S&P Global Inc.',
                 'AAPL': 'Apple Inc.',
@@ -3038,7 +3038,7 @@
 
         // Real-time ticker update with current prices
         async function updateTickerWithRealPrices() {
-            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
+            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK-B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
             const ticker = document.getElementById('ticker');
             
             try {
