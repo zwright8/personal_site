@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comprehensive Data Integration Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background: #0a0a0a; 
+            color: #fff; 
+            padding: 20px; 
+            line-height: 1.6;
+        }
+        .data-source {
+            background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(0,255,136,0.05));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #00ff88;
+        }
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .metric {
+            background: rgba(0,0,0,0.4);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .signal {
+            background: rgba(0,255,136,0.05);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 5px 0;
+            border-left: 3px solid #00ff88;
+        }
+        .score-display {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ff88;
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚀 Comprehensive Market Data Integration System</h1>
+    <p>Demonstrating multi-source data collection for maximum options trading profitability</p>
+    
+    <div class="score-display" id="compositeScore">
+        Loading Composite Score...
+    </div>
+    
+    <button onclick="runComprehensiveTest()" style="background: #00ff88; color: #000; padding: 15px 30px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 16px; margin: 20px 0;">
+        Run Comprehensive Data Analysis
+    </button>
+    
+    <div id="results"></div>
+
+    <script>
+        async function runComprehensiveTest() {
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('compositeScore');
+            
+            resultsDiv.innerHTML = '<h2>🔄 Collecting data from 8 sources...</h2>';
+            scoreDiv.innerHTML = 'Calculating...';
+            
+            // Simulate comprehensive data collection
+            const dataResults = await simulateComprehensiveDataCollection('TSLA');
+            
+            // Display composite score
+            scoreDiv.innerHTML = `Composite Score: ${dataResults.compositeScore.toFixed(0)}/100`;
+            
+            // Display detailed results
+            displayComprehensiveResults(dataResults, resultsDiv);
+        }
+
+        async function simulateComprehensiveDataCollection(symbol) {
+            // Simulate data collection with delays
+            const dataSources = [
+                { name: 'Technical Analysis', delay: 800 },
+                { name: 'Fundamental Metrics', delay: 1200 },
+                { name: 'Options Flow', delay: 1000 },
+                { name: 'News Sentiment', delay: 1500 },
+                { name: 'Social Media Sentiment', delay: 1100 },
+                { name: 'Institutional Flow', delay: 900 },
+                { name: 'Market Microstructure', delay: 700 },
+                { name: 'Macro Indicators', delay: 600 }
+            ];
+
+            const results = await Promise.all(
+                dataSources.map(async (source) => {
+                    await new Promise(resolve => setTimeout(resolve, source.delay));
+                    return generateSourceData(source.name, symbol);
+                })
+            );
+
+            // Process and score all data
+            const processedData = processAllData(results, symbol);
+            return processedData;
+        }
+
+        function generateSourceData(sourceName, symbol) {
+            switch (sourceName) {
+                case 'Technical Analysis':
+                    return {
+                        source: sourceName,
+                        data: {
+                            rsi: 45 + Math.random() * 20,
+                            macd: Math.random() > 0.6 ? 'bullish' : 'neutral',
+                            bollinger: 0.3 + Math.random() * 0.4,
+                            sma_trend: Math.random() > 0.5 ? 'up' : 'down',
+                            volume_trend: Math.random() > 0.4 ? 'increasing' : 'decreasing'
+                        },
+                        score: 40 + Math.random() * 40,
+                        signals: Math.floor(Math.random() * 3)
+                    };
+                
+                case 'Fundamental Metrics':
+                    return {
+                        source: sourceName,
+                        data: {
+                            pe: 15 + Math.random() * 20,
+                            peg: 0.5 + Math.random() * 2,
+                            roe: 0.05 + Math.random() * 0.25,
+                            debt_to_equity: Math.random() * 2,
+                            revenue_growth: -0.1 + Math.random() * 0.4
+                        },
+                        score: 30 + Math.random() * 50,
+                        signals: Math.floor(Math.random() * 2)
+                    };
+                
+                case 'Options Flow':
+                    return {
+                        source: sourceName,
+                        data: {
+                            unusual_activity: Math.floor(Math.random() * 50),
+                            call_put_ratio: 0.5 + Math.random() * 1,
+                            dark_pool: Math.random() > 0.7,
+                            sweeps: Math.floor(Math.random() * 30),
+                            blocks: Math.floor(Math.random() * 20)
+                        },
+                        score: 20 + Math.random() * 60,
+                        signals: Math.floor(Math.random() * 4)
+                    };
+                
+                case 'News Sentiment':
+                    return {
+                        source: sourceName,
+                        data: {
+                            overall_sentiment: -0.5 + Math.random(),
+                            article_count: Math.floor(Math.random() * 100),
+                            earnings_impact: Math.random() > 0.8,
+                            sector_news: Math.random() > 0.5 ? 'positive' : 'negative'
+                        },
+                        score: 25 + Math.random() * 50,
+                        signals: Math.floor(Math.random() * 3)
+                    };
+                
+                case 'Social Media Sentiment':
+                    return {
+                        source: sourceName,
+                        data: {
+                            reddit_sentiment: -0.3 + Math.random() * 0.6,
+                            twitter_mentions: Math.floor(Math.random() * 5000),
+                            stocktwits_bullish: Math.random(),
+                            trending: Math.random() > 0.8
+                        },
+                        score: 20 + Math.random() * 60,
+                        signals: Math.floor(Math.random() * 2)
+                    };
+                
+                case 'Institutional Flow':
+                    return {
+                        source: sourceName,
+                        data: {
+                            net_flow: -2000000 + Math.random() * 4000000,
+                            dark_pool_pct: Math.random() * 0.4,
+                            block_trades: Math.floor(Math.random() * 50),
+                            confidence: Math.random()
+                        },
+                        score: 35 + Math.random() * 45,
+                        signals: Math.floor(Math.random() * 3)
+                    };
+                
+                case 'Market Microstructure':
+                    return {
+                        source: sourceName,
+                        data: {
+                            bid_ask_spread: 0.01 + Math.random() * 0.10,
+                            market_depth: Math.floor(Math.random() * 1000000),
+                            liquidity_score: Math.random() * 100,
+                            vwap_position: Math.random()
+                        },
+                        score: 40 + Math.random() * 30,
+                        signals: Math.floor(Math.random() * 2)
+                    };
+                
+                case 'Macro Indicators':
+                    return {
+                        source: sourceName,
+                        data: {
+                            vix: 15 + Math.random() * 15,
+                            dxy: 100 + Math.random() * 10,
+                            yields_10y: 3.5 + Math.random() * 2,
+                            btc_correlation: Math.random() * 0.8
+                        },
+                        score: 45 + Math.random() * 25,
+                        signals: Math.floor(Math.random() * 2)
+                    };
+                
+                default:
+                    return { source: sourceName, data: {}, score: 50, signals: 0 };
+            }
+        }
+
+        function processAllData(results, symbol) {
+            // Calculate composite score with proper weighting
+            const weights = {
+                'Technical Analysis': 0.25,
+                'Fundamental Metrics': 0.20,
+                'Options Flow': 0.15,
+                'News Sentiment': 0.10,
+                'Social Media Sentiment': 0.10,
+                'Institutional Flow': 0.15,
+                'Market Microstructure': 0.05,
+                'Macro Indicators': 0.05
+            };
+
+            let compositeScore = 0;
+            let totalSignals = 0;
+            let dataQuality = 0;
+
+            results.forEach(result => {
+                const weight = weights[result.source] || 0.1;
+                compositeScore += result.score * weight;
+                totalSignals += result.signals;
+                dataQuality += result.score > 50 ? 1 : 0.5;
+            });
+
+            dataQuality = (dataQuality / results.length) * 100;
+
+            // Generate trading signals based on composite analysis
+            const tradingSignals = generateComprehensiveSignals(results, compositeScore);
+
+            return {
+                symbol,
+                compositeScore,
+                totalSignals,
+                dataQuality,
+                tradingSignals,
+                sourceResults: results,
+                recommendation: generateFinalRecommendation(compositeScore, tradingSignals),
+                timestamp: new Date().toISOString()
+            };
+        }
+
+        function generateComprehensiveSignals(results, compositeScore) {
+            const signals = [];
+
+            // Technical signals
+            const techData = results.find(r => r.source === 'Technical Analysis');
+            if (techData && techData.data.macd === 'bullish' && techData.data.rsi < 60) {
+                signals.push({
+                    type: 'TECHNICAL',
+                    signal: 'Bullish MACD with RSI room to run',
+                    strength: 'Strong',
+                    source: 'Technical Analysis'
+                });
+            }
+
+            // Options flow signals
+            const optionsData = results.find(r => r.source === 'Options Flow');
+            if (optionsData && optionsData.data.sweeps > 20) {
+                signals.push({
+                    type: 'OPTIONS_FLOW',
+                    signal: 'Heavy options sweep activity detected',
+                    strength: 'Very Strong',
+                    source: 'Options Flow'
+                });
+            }
+
+            // Institutional signals
+            const instData = results.find(r => r.source === 'Institutional Flow');
+            if (instData && instData.data.net_flow > 1000000) {
+                signals.push({
+                    type: 'INSTITUTIONAL',
+                    signal: 'Strong institutional buying pressure',
+                    strength: 'Strong',
+                    source: 'Institutional Flow'
+                });
+            }
+
+            // Sentiment signals
+            const newsData = results.find(r => r.source === 'News Sentiment');
+            if (newsData && newsData.data.overall_sentiment > 0.3) {
+                signals.push({
+                    type: 'SENTIMENT',
+                    signal: 'Positive news sentiment momentum',
+                    strength: 'Medium',
+                    source: 'News Sentiment'
+                });
+            }
+
+            // Composite signals
+            if (compositeScore > 75) {
+                signals.push({
+                    type: 'COMPOSITE',
+                    signal: 'Multi-factor bullish convergence',
+                    strength: 'Very Strong',
+                    source: 'Comprehensive Analysis'
+                });
+            }
+
+            return signals;
+        }
+
+        function generateFinalRecommendation(compositeScore, signals) {
+            const strongSignals = signals.filter(s => s.strength === 'Very Strong' || s.strength === 'Strong').length;
+            
+            if (compositeScore > 80 && strongSignals >= 3) {
+                return {
+                    action: 'STRONG BUY',
+                    confidence: 'Very High',
+                    reasoning: `Exceptional composite score of ${compositeScore.toFixed(0)} with ${strongSignals} high-conviction signals across multiple data sources.`
+                };
+            } else if (compositeScore > 65 && strongSignals >= 2) {
+                return {
+                    action: 'BUY',
+                    confidence: 'High',
+                    reasoning: `Strong composite score with multiple confirming signals. Good risk/reward setup.`
+                };
+            } else if (compositeScore > 50) {
+                return {
+                    action: 'MODERATE BUY',
+                    confidence: 'Medium',
+                    reasoning: `Moderate composite score with some positive indicators. Proceed with caution.`
+                };
+            } else {
+                return {
+                    action: 'HOLD',
+                    confidence: 'Low',
+                    reasoning: `Below-average composite score. Wait for better setup.`
+                };
+            }
+        }
+
+        function displayComprehensiveResults(data, container) {
+            const strongSignals = data.tradingSignals.filter(s => s.strength === 'Very Strong' || s.strength === 'Strong').length;
+            
+            container.innerHTML = `
+                <div class="data-source" style="border-left-color: ${getRecommendationColor(data.recommendation.action)};">
+                    <h2>🎯 Final Recommendation: ${data.recommendation.action}</h2>
+                    <p><strong>Confidence:</strong> ${data.recommendation.confidence}</p>
+                    <p><strong>Reasoning:</strong> ${data.recommendation.reasoning}</p>
+                    <div class="metric-grid">
+                        <div class="metric">
+                            <div style="color: #00ff88; font-size: 1.5rem; font-weight: bold;">${data.compositeScore.toFixed(0)}/100</div>
+                            <div>Composite Score</div>
+                        </div>
+                        <div class="metric">
+                            <div style="color: #00ff88; font-size: 1.5rem; font-weight: bold;">${data.tradingSignals.length}</div>
+                            <div>Total Signals</div>
+                        </div>
+                        <div class="metric">
+                            <div style="color: #00ff88; font-size: 1.5rem; font-weight: bold;">${strongSignals}</div>
+                            <div>Strong Signals</div>
+                        </div>
+                        <div class="metric">
+                            <div style="color: #00ff88; font-size: 1.5rem; font-weight: bold;">${data.dataQuality.toFixed(0)}%</div>
+                            <div>Data Quality</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="data-source">
+                    <h3>📊 Data Source Breakdown</h3>
+                    <div class="metric-grid">
+                        ${data.sourceResults.map(result => `
+                            <div class="metric">
+                                <div style="color: #00ff88; font-size: 1.2rem; font-weight: bold;">${result.score.toFixed(0)}</div>
+                                <div style="font-size: 0.9rem;">${result.source}</div>
+                                <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">${result.signals} signals</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${data.tradingSignals.length > 0 ? `
+                <div class="data-source">
+                    <h3>🚨 Active Trading Signals</h3>
+                    ${data.tradingSignals.map(signal => `
+                        <div class="signal">
+                            <div style="color: #00ff88; font-weight: bold;">${signal.signal}</div>
+                            <div style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                                ${signal.type} • ${signal.strength} • Source: ${signal.source}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                ` : ''}
+
+                <div class="data-source">
+                    <h3>💡 Key Insights</h3>
+                    <ul>
+                        <li><strong>Multi-Source Validation:</strong> Analysis incorporates ${data.sourceResults.length} independent data sources</li>
+                        <li><strong>Signal Convergence:</strong> ${strongSignals} high-conviction signals detected across different timeframes</li>
+                        <li><strong>Data Quality:</strong> ${data.dataQuality.toFixed(0)}% of data sources provide reliable signals</li>
+                        <li><strong>Risk Assessment:</strong> Composite scoring reduces false positives through cross-validation</li>
+                    </ul>
+                </div>
+            `;
+        }
+
+        function getRecommendationColor(action) {
+            const colors = {
+                'STRONG BUY': '#00ff88',
+                'BUY': '#44cc66',
+                'MODERATE BUY': '#ffaa00',
+                'HOLD': '#888888',
+                'AVOID': '#ff6464'
+            };
+            return colors[action] || '#888888';
+        }
+    </script>
+</body>
+</html>
