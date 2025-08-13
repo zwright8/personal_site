@@ -335,7 +335,7 @@
             <!-- Live Market Ticker for Portfolio Holdings -->
             <div class="portfolio-ticker">
                 <div class="ticker-content" id="portfolioTicker">
-                    📊 PLTR: $9.85 | NVDA: $456.78 | OXY: $62.45 | AMZN: $142.33 | BRK.B: $398.76 | META: $298.45 | SPGI: $412.67 | AAPL: $185.67 | GOOGL: $142.56 | SNOW: $135.23 | C: $58.45 | BAC: $39.87 | SIRI: $3.12 | LLYVK: $67.89 | NU: $11.45 | UNP: $240.85 | TSM: $110.45 | TSLA: $248.42
+                    📊 PLTR: $9.85 | NVDA: $456.78 | OXY: $62.45 | AMZN: $142.33 | BRK.B: $398.76 | META: $298.45 | SPGI: $412.67 | AAPL: $185.67 | GOOGL: $142.56 | SNOW: $135.23 | C: $58.45 | BAC: $39.87 | SIRI: $3.12 | LLYVK: $67.89 | NU: $11.45 | UNP: $240.85 | TSM: $110.45 | TSLA: $248.42 | UI: $128.73
                 </div>
             </div>
             
@@ -344,7 +344,7 @@
                 <div class="stat-card">
                     <div class="stat-icon">📊</div>
                     <div class="stat-content">
-                        <h3>20</h3>
+                        <h3>21</h3>
                         <p>Total Holdings</p>
                     </div>
                 </div>
@@ -474,6 +474,11 @@
                             <div class="holding-symbol">TSLA</div>
                             <div class="holding-name">Tesla, Inc.</div>
                             <div class="holding-sector">Electric Vehicles</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">UI</div>
+                            <div class="holding-name">Ubiquiti Inc.</div>
+                            <div class="holding-sector">Technology</div>
                         </div>
                         <div class="holding-item">
                             <div class="holding-symbol">NU</div>
@@ -747,10 +752,10 @@
             if (!ticker) return;
             
             const variations = [
-                "📊 PLTR: $9.92 | NVDA: $458.23 | OXY: $62.78 | AMZN: $143.12 | BRK.B: $399.45 | META: $299.67 | SPGI: $413.45 | AAPL: $186.12 | GOOGL: $143.23 | SNOW: $136.45 | C: $58.87 | BAC: $40.12 | SIRI: $3.15 | LLYVK: $68.23 | NU: $11.67 | UNP: $241.23 | TSM: $111.23 | TSLA: $249.87",
-                "📈 PLTR: $9.78 | NVDA: $455.67 | OXY: $61.89 | AMZN: $141.87 | BRK.B: $397.23 | META: $297.89 | SPGI: $411.78 | AAPL: $184.89 | GOOGL: $141.98 | SNOW: $134.78 | C: $58.12 | BAC: $39.67 | SIRI: $3.09 | LLYVK: $67.45 | NU: $11.23 | UNP: $239.67 | TSM: $109.45 | TSLA: $246.12",
-                "📊 PLTR: $10.05 | NVDA: $459.12 | OXY: $63.12 | AMZN: $144.56 | BRK.B: $400.78 | META: $301.23 | SPGI: $414.89 | AAPL: $187.34 | GOOGL: $144.12 | SNOW: $137.89 | C: $59.23 | BAC: $40.45 | SIRI: $3.18 | LLYVK: $68.67 | NU: $11.89 | UNP: $242.15 | TSM: $112.67 | TSLA: $251.45",
-                "📉 PLTR: $9.67 | NVDA: $453.45 | OXY: $61.23 | AMZN: $140.78 | BRK.B: $396.12 | META: $296.45 | SPGI: $410.23 | AAPL: $183.67 | GOOGL: $140.45 | SNOW: $133.12 | C: $57.78 | BAC: $39.23 | SIRI: $3.06 | LLYVK: $66.89 | NU: $10.98 | UNP: $238.45 | TSM: $108.23 | TSLA: $244.67"
+                "📊 PLTR: $9.92 | NVDA: $458.23 | OXY: $62.78 | AMZN: $143.12 | BRK.B: $399.45 | META: $299.67 | SPGI: $413.45 | AAPL: $186.12 | GOOGL: $143.23 | SNOW: $136.45 | C: $58.87 | BAC: $40.12 | SIRI: $3.15 | LLYVK: $68.23 | NU: $11.67 | UNP: $241.23 | TSM: $111.23 | TSLA: $249.87 | UI: $129.45",
+                "📈 PLTR: $9.78 | NVDA: $455.67 | OXY: $61.89 | AMZN: $141.87 | BRK.B: $397.23 | META: $297.89 | SPGI: $411.78 | AAPL: $184.89 | GOOGL: $141.98 | SNOW: $134.78 | C: $58.12 | BAC: $39.67 | SIRI: $3.09 | LLYVK: $67.45 | NU: $11.23 | UNP: $239.67 | TSM: $109.45 | TSLA: $246.12 | UI: $127.89",
+                "📊 PLTR: $10.05 | NVDA: $459.12 | OXY: $63.12 | AMZN: $144.56 | BRK.B: $400.78 | META: $301.23 | SPGI: $414.89 | AAPL: $187.34 | GOOGL: $144.12 | SNOW: $137.89 | C: $59.23 | BAC: $40.45 | SIRI: $3.18 | LLYVK: $68.67 | NU: $11.89 | UNP: $242.15 | TSM: $112.67 | TSLA: $251.45 | UI: $130.12",
+                "📉 PLTR: $9.67 | NVDA: $453.45 | OXY: $61.23 | AMZN: $140.78 | BRK.B: $396.12 | META: $296.45 | SPGI: $410.23 | AAPL: $183.67 | GOOGL: $140.45 | SNOW: $133.12 | C: $57.78 | BAC: $39.23 | SIRI: $3.06 | LLYVK: $66.89 | NU: $10.98 | UNP: $238.45 | TSM: $108.23 | TSLA: $244.67 | UI: $126.78"
             ];
             
             setInterval(() => {

@@ -1543,6 +1543,7 @@
                     <option value="UNP">UNP - Union Pacific</option>
                     <option value="TSM">TSM - Taiwan Semiconductor</option>
                     <option value="TSLA">TSLA - Tesla</option>
+                    <option value="UI">UI - Ubiquiti</option>
                 </select>
                 
                 <select id="optionsExpiry" style="background: rgba(0,0,0,0.9); color: #00ff88; border: 1px solid rgba(0,255,136,0.5); padding: 8px 12px; border-radius: 6px; font-family: 'Courier New', monospace;">
@@ -1859,7 +1860,8 @@
             { symbol: 'MSFT', price: '$342.10', confidence: '82%', change: '+2.1%' },
             { symbol: 'GOOGL', price: '$145.80', confidence: '74%', change: '-0.5%' },
             { symbol: 'TSLA', price: '$251.30', confidence: '69%', change: '+3.4%' },
-            { symbol: 'META', price: '$318.90', confidence: '71%', change: '+1.2%' }
+            { symbol: 'META', price: '$318.90', confidence: '71%', change: '+1.2%' },
+            { symbol: 'UI', price: '$132.40', confidence: '76%', change: '+1.9%' }
         ];
 
         // Generate AI insights
@@ -2202,7 +2204,7 @@
         // Fallback to live API calls when backend data is unavailable
         async function fetchLivePortfolioData(fundamentalsGrid) {
             // Portfolio symbols to fetch
-            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA'];
+            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
             
             try {
                 // Fetch data concurrently from multiple sources
@@ -2921,6 +2923,22 @@
                     currentPrice: 248.42,
                     change: -3.21,
                     changePercent: -1.28
+                },
+                'UI': {
+                    symbol: 'UI',
+                    name: 'Ubiquiti Inc.',
+                    sector: 'Technology',
+                    marketCap: '$8.2B',
+                    revenue: '$2.4B',
+                    revenueGrowth: '12.8%',
+                    grossMargin: '45%',
+                    fcfMargin: '24%',
+                    employees: '4,500',
+                    keyMetric: 'IoT Devices: 85M+',
+                    thesis: 'Leading provider of networking technology for service providers and enterprises with strong ecosystem.',
+                    currentPrice: 128.73,
+                    change: 2.14,
+                    changePercent: 1.69
                 }
             };
             
@@ -2929,7 +2947,7 @@
 
         // Load static data as fallback
         async function loadStaticPortfolioData(container) {
-            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA'];
+            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
             
             portfolioSymbols.forEach(symbol => {
                 const staticData = getStaticCompanyData(symbol);
@@ -2959,7 +2977,8 @@
                 'NU': 'Nu Holdings Ltd.',
                 'UNP': 'Union Pacific Corporation',
                 'TSM': 'Taiwan Semiconductor Manufacturing Company Limited',
-                'TSLA': 'Tesla, Inc.'
+                'TSLA': 'Tesla, Inc.',
+                'UI': 'Ubiquiti Inc.'
             };
             return names[symbol] || symbol;
         }
@@ -3019,7 +3038,7 @@
 
         // Real-time ticker update with current prices
         async function updateTickerWithRealPrices() {
-            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA'];
+            const portfolioSymbols = ['PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'];
             const ticker = document.getElementById('ticker');
             
             try {

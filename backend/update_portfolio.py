@@ -21,7 +21,7 @@ class PortfolioUpdater:
         # Portfolio holdings from your current site
         self.holdings = [
             'PLTR', 'NVDA', 'OXY', 'AMZN', 'BRK.B', 'META', 'SPGI', 
-            'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA'
+            'AAPL', 'GOOGL', 'SNOW', 'C', 'BAC', 'SIRI', 'LLYVK', 'NU', 'UNP', 'TSM', 'TSLA', 'UI'
         ]
         
         self.data_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
