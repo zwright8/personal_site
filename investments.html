@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment Thoughts - Zach Wright</title>
+    <meta name="description" content="Investment analysis, market insights, and economic thoughts by Zach Wright">
+    <link rel="canonical" href="https://zwright8.github.io/personal_site/investments.html">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    
+    <!-- Custom Portfolio Holdings Styles -->
+    <style>
+        .portfolio-holdings-section {
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #0f0f1a 100%);
+            padding: 4rem 0;
+            margin: 2rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .portfolio-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 255, 136, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stat-content h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .holdings-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .sector-group {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sector-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .sector-icon {
+            font-size: 1.5rem;
+        }
+
+        .holdings-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .holding-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .holding-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .holding-item:hover::before {
+            left: 100%;
+        }
+
+        .holding-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(0, 255, 136, 0.4);
+            box-shadow: 0 10px 25px rgba(0, 255, 136, 0.15);
+        }
+
+        .holding-symbol {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #00ff88;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .holding-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .holding-sector {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .portfolio-cta {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(0, 255, 136, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        .portfolio-cta p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0;
+        }
+
+        .portfolio-cta a {
+            color: #00ff88;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-cta a:hover {
+            color: #00cc6a;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .portfolio-holdings-section {
+                padding: 2rem 0;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .portfolio-stats {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1rem;
+            }
+
+            .stat-card {
+                padding: 1.5rem;
+            }
+
+            .sector-group {
+                padding: 1.5rem;
+            }
+
+            .holdings-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .holding-item {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="logo-text">ZW</span>
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="investments.html" class="nav-link active">Investment Thoughts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Investment Thoughts</h1>
+            <p class="page-subtitle">
+                Market analysis, investment insights, and economic commentary on the forces shaping our financial landscape.
+            </p>
+        </div>
+    </section>
+
+    <!-- Current Portfolio Holdings Section -->
+    <section class="portfolio-holdings-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Current Portfolio Holdings</h2>
+                <p class="section-subtitle">20 carefully selected positions across key sectors driving future growth</p>
+            </div>
+            
+            <!-- Portfolio Overview Stats -->
+            <div class="portfolio-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>20</h3>
+                        <p>Total Holdings</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🌍</div>
+                    <div class="stat-content">
+                        <h3>8</h3>
+                        <p>Sectors</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💰</div>
+                    <div class="stat-content">
+                        <h3>$847B</h3>
+                        <p>Avg Market Cap</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-content">
+                        <h3>Live</h3>
+                        <p>Data Feed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Holdings Grid -->
+            <div class="holdings-grid">
+                <!-- Technology Sector -->
+                <div class="sector-group">
+                    <h3 class="sector-title">
+                        <span class="sector-icon">💻</span>
+                        Technology & Software
+                    </h3>
+                    <div class="holdings-row">
+                        <div class="holding-item">
+                            <div class="holding-symbol">PLTR</div>
+                            <div class="holding-name">Palantir Technologies</div>
+                            <div class="holding-sector">Software Infrastructure</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">NVDA</div>
+                            <div class="holding-name">NVIDIA Corporation</div>
+                            <div class="holding-sector">Semiconductors</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">TSM</div>
+                            <div class="holding-name">Taiwan Semiconductor</div>
+                            <div class="holding-sector">Semiconductors</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">SNOW</div>
+                            <div class="holding-name">Snowflake Inc.</div>
+                            <div class="holding-sector">Cloud Data Platform</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Internet & Cloud -->
+                <div class="sector-group">
+                    <h3 class="sector-title">
+                        <span class="sector-icon">☁️</span>
+                        Internet & Cloud
+                    </h3>
+                    <div class="holdings-row">
+                        <div class="holding-item">
+                            <div class="holding-symbol">AMZN</div>
+                            <div class="holding-name">Amazon.com Inc.</div>
+                            <div class="holding-sector">E-commerce & Cloud</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">META</div>
+                            <div class="holding-name">Meta Platforms</div>
+                            <div class="holding-sector">Social Media</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">GOOGL</div>
+                            <div class="holding-name">Alphabet Inc.</div>
+                            <div class="holding-sector">Search & Cloud</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">AAPL</div>
+                            <div class="holding-name">Apple Inc.</div>
+                            <div class="holding-sector">Consumer Electronics</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="sector-group">
+                    <h3 class="sector-title">
+                        <span class="sector-icon">🏦</span>
+                        Financial Services
+                    </h3>
+                    <div class="holdings-row">
+                        <div class="holding-item">
+                            <div class="holding-symbol">BRK.B</div>
+                            <div class="holding-name">Berkshire Hathaway</div>
+                            <div class="holding-sector">Conglomerate</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">SPGI</div>
+                            <div class="holding-name">S&P Global Inc.</div>
+                            <div class="holding-sector">Financial Data</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">C</div>
+                            <div class="holding-name">Citigroup Inc.</div>
+                            <div class="holding-sector">Banking</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">BAC</div>
+                            <div class="holding-name">Bank of America</div>
+                            <div class="holding-sector">Banking</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emerging & Specialty -->
+                <div class="sector-group">
+                    <h3 class="sector-title">
+                        <span class="sector-icon">🚀</span>
+                        Emerging & Specialty
+                    </h3>
+                    <div class="holdings-row">
+                        <div class="holding-item">
+                            <div class="holding-symbol">TSLA</div>
+                            <div class="holding-name">Tesla, Inc.</div>
+                            <div class="holding-sector">Electric Vehicles</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">NU</div>
+                            <div class="holding-name">Nu Holdings Ltd.</div>
+                            <div class="holding-sector">Digital Banking</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">OXY</div>
+                            <div class="holding-name">Occidental Petroleum</div>
+                            <div class="holding-sector">Oil & Gas</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">UNP</div>
+                            <div class="holding-name">Union Pacific</div>
+                            <div class="holding-sector">Transportation</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Media & Communications -->
+                <div class="sector-group">
+                    <h3 class="sector-title">
+                        <span class="sector-icon">📡</span>
+                        Media & Communications
+                    </h3>
+                    <div class="holdings-row">
+                        <div class="holding-item">
+                            <div class="holding-symbol">SIRI</div>
+                            <div class="holding-name">Sirius XM Holdings</div>
+                            <div class="holding-sector">Satellite Radio</div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-symbol">LLYVK</div>
+                            <div class="holding-name">Liberty Media Corp.</div>
+                            <div class="holding-sector">Media Holding</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="portfolio-cta">
+                <p>Want detailed analysis on these holdings? Check out the <a href="index.html">comprehensive fundamental analysis</a> with real-time data and AI-powered insights.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Posts Section -->
+    <section class="investment-articles">
+        <div class="container">
+            <!-- Featured Article -->
+            <article class="featured-article">
+                <div class="article-date">
+                    <span class="month">Aug</span>
+                    <span class="day">15</span>
+                    <span class="year">2025</span>
+                </div>
+                <div class="article-content">
+                    <span class="featured-badge">Featured Analysis</span>
+                    <h2><a href="#article-1">Market Analysis: Current Economic Indicators</a></h2>
+                    <p class="article-excerpt">
+                        Deep dive into the latest economic data and what it means for investment strategies. 
+                        Examining inflation trends, employment figures, and their impact on various asset classes. 
+                        With central banks navigating complex monetary policy decisions, understanding these indicators 
+                        is crucial for positioning portfolios in the current environment.
+                    </p>
+                    <div class="article-tags">
+                        <span>Market Analysis</span>
+                        <span>Economics</span>
+                        <span>Strategy</span>
+                        <span>Inflation</span>
+                    </div>
+                    <div class="article-meta">
+                        <span><i class="fas fa-clock"></i> 8 min read</span>
+                        <span><i class="fas fa-chart-line"></i> Market Analysis</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article Grid -->
+            <div class="articles-grid">
+                <article class="article-card">
+                    <div class="card-date">
+                        <span class="month">Aug</span>
+                        <span class="day">10</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#article-2">Tech Valuations in the Current Market</a></h3>
+                        <p>Analysis of technology sector valuations amid changing interest rates and market sentiment. Which tech investments offer value in today's environment?</p>
+                        <div class="article-tags">
+                            <span>Technology</span>
+                            <span>Valuations</span>
+                            <span>Growth Stocks</span>
+                        </div>
+                        <div class="article-meta">
+                            <span><i class="fas fa-clock"></i> 6 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-date">
+                        <span class="month">Aug</span>
+                        <span class="day">05</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#article-3">Energy Transition Investment Opportunities</a></h3>
+                        <p>Exploring investment opportunities in the global energy transition. From renewable infrastructure to battery technology, where are the compelling opportunities?</p>
+                        <div class="article-tags">
+                            <span>Energy</span>
+                            <span>ESG</span>
+                            <span>Infrastructure</span>
+                        </div>
+                        <div class="article-meta">
+                            <span><i class="fas fa-clock"></i> 7 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-date">
+                        <span class="month">Jul</span>
+                        <span class="day">28</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#article-4">Real Estate in a Rising Rate Environment</a></h3>
+                        <p>How commercial and residential real estate markets are adapting to higher interest rates. Sector analysis and opportunity identification.</p>
+                        <div class="article-tags">
+                            <span>Real Estate</span>
+                            <span>Interest Rates</span>
+                            <span>REITs</span>
+                        </div>
+                        <div class="article-meta">
+                            <span><i class="fas fa-clock"></i> 5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-date">
+                        <span class="month">Jul</span>
+                        <span class="day">20</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#article-5">International Markets: Emerging Opportunities</a></h3>
+                        <p>Analyzing emerging market opportunities as global trade patterns shift. Currency considerations and geopolitical risk assessment.</p>
+                        <div class="article-tags">
+                            <span>Emerging Markets</span>
+                            <span>Global</span>
+                            <span>Currency</span>
+                        </div>
+                        <div class="article-meta">
+                            <span><i class="fas fa-clock"></i> 9 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-date">
+                        <span class="month">Jul</span>
+                        <span class="day">12</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#article-6">Healthcare Innovation Investment Thesis</a></h3>
+                        <p>The convergence of AI, biotechnology, and healthcare delivery creates compelling investment opportunities. Sector deep-dive and key players.</p>
+                        <div class="article-tags">
+                            <span>Healthcare</span>
+                            <span>AI</span>
+                            <span>Biotech</span>
+                        </div>
+                        <div class="article-meta">
+                            <span><i class="fas fa-clock"></i> 8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card">
+                    <div class="card-date">
+                        <span class="month">Jul</span>
+                        <span class="day">03</span>
+                        <span class="year">2025</span>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="#article-7">Cryptocurrency Market Maturation</a></h3>
+                        <p>How institutional adoption is changing the cryptocurrency landscape. Analysis of regulatory developments and market structure evolution.</p>
+                        <div class="article-tags">
+                            <span>Cryptocurrency</span>
+                            <span>Institutional</span>
+                            <span>Regulation</span>
+                        </div>
+                        <div class="article-meta">
+                            <span><i class="fas fa-clock"></i> 6 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Coming Soon Notice -->
+            <div class="coming-soon-notice">
+                <i class="fas fa-edit"></i>
+                <h3>More Analysis Coming Soon</h3>
+                <p>I'm working on publishing detailed investment analysis and market commentary. Check back regularly for new insights on market trends, sector analysis, and investment opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Get notified when I publish new investment analysis and market insights.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <p class="newsletter-privacy">No spam. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Zach Wright</h3>
+                    <p>Investment analysis and financial technology insights</p>
+                    <p>&copy; 2025 Zach Wright. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="investments.html">Investment Thoughts</a></li>
+                        <li><a href="index.html#projects">Projects</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/zachary-d-wright" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://x.com/ZacharyDWright" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-x-twitter"></i>
+                        </a>
+                        <a href="https://github.com/zwright8" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+</html>
