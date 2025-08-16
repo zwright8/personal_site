@@ -1450,15 +1450,16 @@
         }
         html, body { background: var(--bg); color: var(--fg); }
         body { font-feature-settings: "ss01" on, "liga" on; }
-        header { background: transparent !important; border-bottom: 1px solid var(--border); }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,11,13,0.85) !important; backdrop-filter: saturate(120%) blur(8px); border-bottom: 1px solid var(--border); }
+    main.container { padding-top: 100px; }
         header .logo { color: var(--fg) !important; font-weight: 600; letter-spacing: 0; }
         header .nav-links a { color: var(--fg) !important; opacity: 0.85; }
         header .nav-links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 
         /* Containers and cards */
         section > div[style*="padding"] { background: var(--card) !important; border: 1px solid var(--border) !important; box-shadow: none !important; }
-        .market-ticker { background: #0b0c10 !important; border: 1px solid var(--border) !important; }
-        .market-ticker #ticker { color: var(--muted) !important; }
+    .market-ticker { background: #0b0c10 !important; border: 1px solid var(--border) !important; }
+    .market-ticker #ticker { color: var(--muted) !important; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 12.5px; letter-spacing: 0.2px; }
 
         /* Typography */
         h1, h2 { font-family: 'IBM Plex Serif', Georgia, serif !important; color: var(--fg) !important; background: none !important; -webkit-text-fill-color: initial !important; }
@@ -2222,40 +2223,6 @@
         <p>&copy; 2025 Zach Wright. Focused on long-term business ownership and value creation.</p>
     </footer>
 
-    <!-- Spotify Music Integration - What's a Gremlin by SIPPY -->
-    <div id="spotifyContainer" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,255,136,0.3); background: rgba(0,0,0,0.8); padding: 15px; transition: all 0.3s ease; cursor: move; border: 1px solid rgba(0,255,136,0.2);">
-        <!-- Drag Handle Area -->
-        <div id="spotifyDragHandle" style="position: absolute; top: 0; left: 0; right: 0; height: 40px; background: rgba(0,255,136,0.1); border-radius: 12px 12px 0 0; cursor: move; display: flex; align-items: center; justify-content: center; opacity: 0.7;">
-            <div style="display: flex; gap: 3px;">
-                <div style="width: 4px; height: 4px; background: #00ff88; border-radius: 50%; opacity: 0.6;"></div>
-                <div style="width: 4px; height: 4px; background: #00ff88; border-radius: 50%; opacity: 0.6;"></div>
-                <div style="width: 4px; height: 4px; background: #00ff88; border-radius: 50%; opacity: 0.6;"></div>
-                <div style="width: 4px; height: 4px; background: #00ff88; border-radius: 50%; opacity: 0.6;"></div>
-                <div style="width: 4px; height: 4px; background: #00ff88; border-radius: 50%; opacity: 0.6;"></div>
-                <div style="width: 4px; height: 4px; background: #00ff88; border-radius: 50%; opacity: 0.6;"></div>
-            </div>
-        </div>
-        
-        <div id="spotifyHeader" style="color: #00ff88; font-weight: 600; font-size: 14px; margin-bottom: 10px; text-align: center; position: relative; margin-top: 25px;">
-            What I'm listening to:
-            <button id="hideSpotifyBtn" style="position: absolute; right: -5px; top: -5px; background: rgba(255,255,255,0.1); border: none; border-radius: 50%; width: 20px; height: 20px; color: #00ff88; cursor: pointer; font-size: 12px; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">×</button>
-            <div style="position: absolute; top: 100%; right: 0; margin-top: 5px; font-size: 10px; color: rgba(0,255,136,0.5); white-space: nowrap;">Drag → to hide</div>
-        </div>
-        <iframe id="spotifyIframe" data-testid="embed-iframe" 
-                style="border-radius:12px" 
-                src="https://open.spotify.com/embed/track/3wWdJGv0iqFJRQ82Uixaiu?utm_source=generator" 
-                width="352" height="352" 
-                frameBorder="0" 
-                allowfullscreen="" 
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy">
-        </iframe>
-    </div>
-
-    <!-- Minimized Spotify Toggle -->
-    <div id="spotifyToggle" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; width: 60px; height: 60px; border-radius: 50%; background: rgba(0,0,0,0.8); border: 2px solid #00ff88; display: none; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 15px rgba(0,255,136,0.3); transition: all 0.3s ease;">
-    <span style="color: #00ff88; font-size: 20px;"></span>
-    </div>
 
     <script>
         // AI-powered features
@@ -7559,14 +7526,5 @@
         }
 
         function openChart(symbol) {
-            // Open interactive chart
+        // (Spotify widget removed for a cleaner, corporate tone)
             alert(`Opening chart for ${symbol}. In production, this would integrate with TradingView or similar charting platform.`);
-        }
-
-        function viewNews(symbol) {
-            // Open news feed for stock
-            alert(`Opening news for ${symbol}. In production, this would show curated news and analyst reports.`);
-        }
-    </script>
-</body>
-</html>
