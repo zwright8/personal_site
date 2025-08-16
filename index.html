@@ -17,8 +17,7 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- TradingView Charting Library -->
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+    
     
     <style>
         * {
@@ -1439,7 +1438,7 @@
         
     </style>
     <style>
-        /* Palantir-inspired theme overrides */
+    /* Theme overrides */
         :root {
             --bg: #0a0b0d;
             --card: #0d0f12;
@@ -1666,7 +1665,7 @@
                 <!-- Performance Chart Placeholder -->
                 <div style="background: rgba(255,255,255,0.02); border-radius: 12px; padding: 2rem; margin-bottom: 2rem; text-align: center; border: 1px solid rgba(255,255,255,0.1);">
                     <div style="color: rgba(255,255,255,0.6); font-size: 1.1rem; margin-bottom: 1rem;">Interactive Performance Chart</div>
-                    <div style="color: rgba(255,255,255,0.4); font-size: 0.9rem;">Chart will be integrated with TradingView or custom visualization</div>
+                    <div style="color: rgba(255,255,255,0.4); font-size: 0.9rem;">Chart module placeholder</div>
                 </div>
 
                 <!-- Performance Table -->
@@ -1883,7 +1882,7 @@
                             Comprehensive business analysis of individual holdings focusing on competitive position and long-term value creation potential.
                         </p>
                         <div style="margin-bottom: 1rem;">
-                            <div style="color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 0.5rem;">Palantir: Building the Data Operating System</div>
+                            <div style="color: rgba(255,255,255,0.9); font-weight: 600; margin-bottom: 0.5rem;">Building the Modern Data Operating System</div>
                             <div style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">Updated: August 8, 2025</div>
                         </div>
                         <button onclick="viewResearch('companies')" style="background: rgba(245,158,11,0.1); color: #f59e0b; border: 1px solid #f59e0b; padding: 0.7rem 1.2rem; border-radius: 6px; font-weight: 600; cursor: pointer; width: 100%;">
@@ -3556,195 +3555,19 @@
             }
         }
 
-        // Economic Calendar Integration
-        function loadEconomicCalendar() {
-            // Add TradingView Economic Calendar widget
-            const calendarContainer = document.createElement('div');
-            calendarContainer.innerHTML = `
-                    </div>
-                </div>
-            `;
-            
-            // Insert after portfolio viz
-            const portfolioViz = document.querySelector('.portfolio-viz');
-            if (portfolioViz && portfolioViz.parentNode) {
-                portfolioViz.parentNode.insertBefore(calendarContainer, portfolioViz.nextSibling);
-            }
-        }
+    // Economic calendar widget removed to avoid implying third-party integrations
 
 
-        // Forge/EquityZen availability checker (simulated)
-        function checkPrivateMarketAvailability() {
-            const platforms = ['Forge', 'EquityZen', 'Nasdaq Private Market', 'Hiive'];
-            const availabilityData = {};
-            
-            // Simulate availability data
-            const companies = ['SpaceX', 'Stripe', 'Databricks', 'Discord', 'Canva', 'Anthropic'];
-            companies.forEach(company => {
-                availabilityData[company] = platforms[Math.floor(Math.random() * platforms.length)];
-            });
-            
-            return availabilityData;
-        }
+    // Private market availability checker removed to avoid implying third-party relationships
 
-        // Spotify Player Interactive Features
-        function initializeSpotifyControls() {
-            const container = document.getElementById('spotifyContainer');
-            const toggle = document.getElementById('spotifyToggle');
-            const hideBtn = document.getElementById('hideSpotifyBtn');
-
-            // If the Spotify widget is not present (removed), safely no-op
-            if (!container || !toggle || !hideBtn) {
-                return;
-            }
-            
-            let isHidden = false;
-            let isDragging = false;
-            let startX = 0;
-            let startY = 0;
-            let initialX = 0;
-            let initialY = 0;
-
-            // Hide/Show functionality
-            function hideSpotify() {
-                container.style.transform = 'translateX(100%)';
-                container.style.opacity = '0';
-                setTimeout(() => {
-                    container.style.display = 'none';
-                    toggle.style.display = 'flex';
-                }, 300);
-                isHidden = true;
-            }
-
-            function showSpotify() {
-                container.style.display = 'block';
-                toggle.style.display = 'none';
-                setTimeout(() => {
-                    container.style.transform = 'translateX(0)';
-                    container.style.opacity = '1';
-                }, 10);
-                isHidden = false;
-            }
-
-            // Click hide button
-            hideBtn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                hideSpotify();
-            });
-
-            // Click toggle to show
-            toggle.addEventListener('click', showSpotify);
-
-            // Drag functionality
-            container.addEventListener('mousedown', startDrag);
-            container.addEventListener('touchstart', startDrag);
-
-            function startDrag(e) {
-                if (e.target === hideBtn) return; // Don't drag when clicking hide button
-                
-                // Prevent iframe from interfering with drag
-                e.preventDefault();
-                e.stopPropagation();
-                
-                isDragging = true;
-                container.style.cursor = 'grabbing';
-                container.style.userSelect = 'none';
-                
-                // Disable pointer events on iframe during drag
-                const iframe = document.getElementById('spotifyIframe');
-                if (iframe) iframe.style.pointerEvents = 'none';
-                
-                if (e.type === 'mousedown') {
-                    startX = e.clientX;
-                    startY = e.clientY;
-                } else {
-                    startX = e.touches[0].clientX;
-                    startY = e.touches[0].clientY;
-                }
-
-                const rect = container.getBoundingClientRect();
-                initialX = rect.left;
-                initialY = rect.top;
-
-                document.addEventListener('mousemove', drag);
-                document.addEventListener('touchmove', drag, { passive: false });
-                document.addEventListener('mouseup', stopDrag);
-                document.addEventListener('touchend', stopDrag);
-            }
-
-            function drag(e) {
-                if (!isDragging) return;
-                e.preventDefault();
-
-                let currentX, currentY;
-                if (e.type === 'mousemove') {
-                    currentX = e.clientX;
-                    currentY = e.clientY;
-                } else {
-                    currentX = e.touches[0].clientX;
-                    currentY = e.touches[0].clientY;
-                }
-
-                const deltaX = currentX - startX;
-                const deltaY = currentY - startY;
-
-                // Only allow dragging to the right and within screen bounds
-                if (deltaX > 0) {
-                    container.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
-                    
-                    // Add opacity fade and scale when dragging right
-                    const dragDistance = Math.max(0, deltaX);
-                    const opacity = Math.max(0.3, 1 - (dragDistance / 200));
-                    const scale = Math.max(0.8, 1 - (dragDistance / 400));
-                    container.style.opacity = opacity;
-                    container.style.transform = `translate(${deltaX}px, ${deltaY}px) scale(${scale})`;
-                    
-                    // Show visual feedback at threshold
-                    if (dragDistance > 150) {
-                        container.style.filter = 'grayscale(0.5)';
-                    } else {
-                        container.style.filter = 'none';
-                    }
-                }
-            }
-
-            function stopDrag(e) {
-                if (!isDragging) return;
-                
-                isDragging = false;
-                container.style.cursor = 'move';
-                container.style.userSelect = '';
-                
-                // Re-enable pointer events on iframe
-                const iframe = document.getElementById('spotifyIframe');
-                if (iframe) iframe.style.pointerEvents = 'auto';
-
-                const rect = container.getBoundingClientRect();
-                const deltaX = rect.left - initialX;
-
-                // If dragged more than 150px to the right, hide it
-                if (deltaX > 150) {
-                    hideSpotify();
-                } else {
-                    // Snap back to original position
-                    container.style.transform = 'translate(0, 0)';
-                    container.style.opacity = '1';
-                    container.style.filter = 'none';
-                }
-
-                document.removeEventListener('mousemove', drag);
-                document.removeEventListener('touchmove', drag);
-                document.removeEventListener('mouseup', stopDrag);
-                document.removeEventListener('touchend', stopDrag);
-            }
-        }
+    // Removed Spotify interactive controls to avoid implying any integrations
 
         // Initialize animations when page loads
         document.addEventListener('DOMContentLoaded', function() {
             createParticles();
             updateTicker();
             initializeAI();
-            initializeSpotifyControls();
+            // Spotify controls removed
             
             // Initialize financial data integrations with real-time APIs
             fetchPortfolioFundamentals();
@@ -3753,7 +3576,7 @@
                 updatePortfolioData();
             }
             updateTickerWithRealPrices();
-            loadEconomicCalendar();
+            // Economic calendar integration removed
             
             // Set up periodic updates for real-time data
             setInterval(() => {
@@ -7495,15 +7318,13 @@
         }
 
         function openChart(symbol) {
-            // Open TradingView chart in new tab
-            const tradingViewUrl = `https://www.tradingview.com/chart/?symbol=${symbol}`;
-            window.open(tradingViewUrl, '_blank', 'noopener,noreferrer');
+            // Open neutral chart view placeholder (no third-party implied)
+            alert(`Chart view for ${symbol}. A neutral, in-house chart can be added here.`);
         }
 
         function viewNews(symbol) {
-            // Open Google Finance news for the symbol
-            const googleFinanceUrl = `https://www.google.com/finance/quote/${symbol}:NASDAQ`;
-            window.open(googleFinanceUrl, '_blank', 'noopener,noreferrer');
+            // Open neutral news placeholder (no third-party implied)
+            alert(`News feed for ${symbol}. A neutral, in-house news view can be added here.`);
         }
 
         // Initialize portfolio UI on page load
@@ -7589,5 +7410,5 @@
         }
 
         function openChart(symbol) {
-        // (Spotify widget removed for a cleaner, corporate tone)
-            alert(`Opening chart for ${symbol}. In production, this would integrate with TradingView or similar charting platform.`);
+            // Neutral placeholder for chart view
+            alert(`Chart view for ${symbol}. An internal chart module can be added here.`);
