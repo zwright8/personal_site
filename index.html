@@ -3571,6 +3571,11 @@
             const container = document.getElementById('spotifyContainer');
             const toggle = document.getElementById('spotifyToggle');
             const hideBtn = document.getElementById('hideSpotifyBtn');
+
+            // If the Spotify widget is not present (removed), safely no-op
+            if (!container || !toggle || !hideBtn) {
+                return;
+            }
             
             let isHidden = false;
             let isDragging = false;
@@ -3626,7 +3631,7 @@
                 
                 // Disable pointer events on iframe during drag
                 const iframe = document.getElementById('spotifyIframe');
-                iframe.style.pointerEvents = 'none';
+                if (iframe) iframe.style.pointerEvents = 'none';
                 
                 if (e.type === 'mousedown') {
                     startX = e.clientX;
@@ -3691,7 +3696,7 @@
                 
                 // Re-enable pointer events on iframe
                 const iframe = document.getElementById('spotifyIframe');
-                iframe.style.pointerEvents = 'auto';
+                if (iframe) iframe.style.pointerEvents = 'auto';
 
                 const rect = container.getBoundingClientRect();
                 const deltaX = rect.left - initialX;
@@ -3722,7 +3727,10 @@
             
             // Initialize financial data integrations with real-time APIs
             fetchPortfolioFundamentals();
-            updatePortfolioData();
+            // Guard: If updatePortfolioData isn't defined (legacy), no-op
+            if (typeof updatePortfolioData === 'function') {
+                updatePortfolioData();
+            }
             updateTickerWithRealPrices();
             loadEconomicCalendar();
             
