@@ -2605,18 +2605,36 @@
                 // Convert backend data format to frontend format
                 const convertedData = {};
                 for (const [symbol, stockData] of Object.entries(data)) {
+                    // Pull a static fallback to fill presentation fields if backend lacks them
+                    const staticFallback = getStaticCompanyData(symbol) || {};
+                    const num = (v) => {
+                        const n = Number(v);
+                        return Number.isFinite(n) ? n : 0;
+                    };
+                    const fmt = (v) => (typeof v === 'number' ? formatValue(v) : (v ?? 'N/A'));
+
                     convertedData[symbol] = {
-                        symbol: stockData.symbol,
-                        companyName: getCompanyName(stockData.symbol),
-                        price: stockData.price,
-                        change: stockData.change,
-                        changePercent: stockData.change_percent,
-                        marketCap: stockData.market_cap,
+                        // Required by cards
+                        symbol: stockData.symbol || symbol,
+                        name: getCompanyName(stockData.symbol || symbol),
+                        sector: getSector(stockData.symbol || symbol),
+                        marketCap: fmt(stockData.market_cap ?? staticFallback.marketCap),
+                        revenue: fmt(stockData.revenue ?? staticFallback.revenue),
+                        revenueGrowth: staticFallback.revenueGrowth || 'N/A',
+                        grossMargin: staticFallback.grossMargin || 'N/A',
+                        fcfMargin: staticFallback.fcfMargin || 'N/A',
+                        employees: staticFallback.employees || 'N/A',
+                        keyMetric: staticFallback.keyMetric || 'Key metric: TBD',
+                        thesis: getInvestmentThesis(stockData.symbol || symbol),
+                        currentPrice: num(stockData.price),
+                        change: num(stockData.change),
+                        changePercent: num(stockData.change_percent),
+
+                        // Extra fields preserved (not directly used by cards)
                         peRatio: stockData.pe_ratio,
                         dividendYield: stockData.dividend_yield,
                         bookValue: stockData.book_value,
                         eps: stockData.eps,
-                        revenue: stockData.revenue,
                         profitMargin: stockData.profit_margin,
                         debtToEquity: stockData.debt_to_equity,
                         roe: stockData.roe,
@@ -2990,8 +3008,11 @@
             card.setAttribute('data-sector', data.sector);
             
             // Determine performance color
-            const performanceClass = data.change >= 0 ? 'performance-positive' : 'performance-negative';
-            const performanceIcon = data.change >= 0 ? '+' : '−';
+            const safeChange = Number.isFinite(Number(data.change)) ? Number(data.change) : 0;
+            const safeChangePercent = Number.isFinite(Number(data.changePercent)) ? Number(data.changePercent) : 0;
+            const safePrice = Number.isFinite(Number(data.currentPrice)) ? Number(data.currentPrice) : 0;
+            const performanceClass = safeChange >= 0 ? 'performance-positive' : 'performance-negative';
+            const performanceIcon = safeChange >= 0 ? '+' : '−';
             
             // Get sector color
             const sectorColors = {
@@ -3034,12 +3055,12 @@
                     <!-- Price and Performance -->
                     <div style="text-align: right; min-width: 100px;">
                         <div style="color: #00ff88; font-weight: 700; font-size: 1.1rem; font-family: 'Courier New', monospace;">
-                            $${data.currentPrice.toFixed(2)}
+                            $${safePrice.toFixed(2)}
                         </div>
                         ${data.change !== undefined ? 
                             `<div class="${performanceClass}" style="font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; justify-content: flex-end; gap: 0.3rem; margin-top: 0.2rem;">
                                 <span>${performanceIcon}</span>
-                                ${data.change >= 0 ? '+' : ''}${data.changePercent.toFixed(2)}%
+                                ${safeChange >= 0 ? '+' : ''}${safeChangePercent.toFixed(2)}%
                             </div>` : 
                             ''
                         }
